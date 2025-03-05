@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nordhaven RP</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: url('img/Designer.jpeg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            animation: fadeIn 2s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(30, 30, 30, 0.9);
+            padding: 20px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+        .nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 35px;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+        .nav a:hover {
+            color: #0099ff;
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .regelwerk {
+            padding: 80px 40px;
+            text-align: left;
+            max-width: 1200px;
+            margin: auto;
+            background: rgba(20, 20, 20, 0.9);
+            border-radius: 10px;
+        }
+        .regelwerk h2, .regelwerk h3 {
+            color: #0099ff;
+        }
+        .regelwerk p, .regelwerk ul {
+            margin-bottom: 15px;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        .regelwerk ul {
+            padding-left: 20px;
+        }
+        
+        .footer {
+            background: rgba(20, 20, 20, 0.9);
+            padding: 30px;
+            margin-top: 5%;
+            border-radius: 10px;
+            font-size: 16px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            text-align: left;
+            color: #ffffff;
+        }
+        .footer-section {
+            max-width: 300px;
+        }
+        .footer h3 {
+            color: #0099ff;
+        }
+        .footer a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            margin: 5px 0;
+            transition: color 0.3s;
+        }
+        .footer a:hover {
+            color: #0099ff;
+        }
+    </style>
+    <link rel="icon" type="image/png" href="icon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="icon/favicon.svg" />
+    <link rel="shortcut icon" href="icon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="icon/apple-touch-icon.png" />
+    <link rel="manifest" href="icon/site.webmanifest" />
+</head>
+<body>
+    <header class="header">
+        <div class="logo">Nordhaven RP</div>
+        <nav class="nav">
+            <a href="index">Home</a>
+            <a href="Regelwerk">Regelwerk</a>
+            <a href="Team">Team</a>
+            <a href="Fraktionen">Fraktionen</a>
+        </nav>
+    </header>
+    
+    <main class="regelwerk">
+    <h1>Regelwerk</h1>
+    <h2>§1 Allgemeine Regeln</h2>
+    <p><strong>§1 Abs.1</strong> Alle im Regelwerk stehenden Regeln sind ausnahmslos einzuhalten. Das Ausnutzen von Lücken im Regelwerk wird bestraft.</p>
+    <p><strong>§1 Abs.2</strong> Das Mindestalter auf unserem RP-Server ist 16 Jahre. Ebenso wird auf angemessene geistige Reife geachtet. Die Einschätzung dieser Faktoren obliegt dem Team.</p>
+    <p><strong>§1 Abs.3</strong> Unwissenheit schützt vor Strafe nicht. Aussagen wie „Das wusste ich nicht“ haben bei uns keinen Stellenwert.</p>
+    <p><strong>§1 Abs.4</strong> Durch das Verbinden auf unseren Gameserver willigst du ein, dass deine Handlungen im Spiel aufgezeichnet werden.</p>
+    <p><strong>§1 Abs.5</strong> Du trägst die Verantwortung über deinen Account sowie dein Handeln.</p>
+    <p><strong>§1 Abs.6</strong> Es ist verboten, mit mehreren Steam-Accounts auf dem Server zu spielen und wird mit einem permanenten Bann bestraft.</p>
+    <p><strong>§1 Abs.7</strong> RP-Situationen sowie auch Beleidigungen sind stets IC zu nehmen. Trenne IC und OOC.</p>
+    <p><strong>§1 Abs.8</strong> Das Verkaufen von Ingame-Inhalten gegen Echtgeld ist verboten.</p>
+
+    <h2>§2 Roleplay</h2>
+    <p><strong>§2 Abs.1</strong> Das Leben eures RP-Charakters ist euer höchstes Gut. Setze dies nicht unnötig aufs Spiel.</p>
+    <p><strong>§2 Abs.2</strong> RDM (Random Deathmatch) ist strengstens verboten.</p>
+    <p><strong>§2 Abs.3</strong> VDM (Vehicle Deathmatch) ist strengstens verboten, es sei denn, es gibt einen RP-Hintergrund.</p>
+    <p><strong>§2 Abs.4</strong> Power-RP ist untersagt. Beispiel: „Spring von der Brücke oder ich töte dich.“</p>
+    <p><strong>§2 Abs.5</strong> Metagaming beschreibt das Verwenden von OOC-Informationen IC.</p>
+    <p><strong>§2 Abs.6</strong> Stimmenverzerrer sind nur bei Anrufen erlaubt.</p>
+    <p><strong>§2 Abs.7</strong> Staatsfahrzeuge dürfen nicht gestohlen werden, außer in lebensbedrohlichen Situationen.</p>
+    <p><strong>§2 Abs.8</strong> Combat Logging ist verboten.</p>
+    <p><strong>§2 Abs.9</strong> Schussankündigungen müssen eingehalten werden.</p>
+    <p><strong>§2 Abs.10</strong> Drive-Bys sind nur mit Pistolen erlaubt.</p>
+    <p><strong>§2 Abs.12</strong> Korruption in staatlichen Fraktionen ist erst ab der Führungsebene strengstens verboten. Das Weitergeben von Waffen ist Staatsfraktionen untersagt.</p>
+    <p><strong>§2 Abs.13</strong> Gang Baiting sowie Cop Baiting ist verboten.</p>
+    <p><strong>§2 Abs.14</strong> Maskierte Personen dürfen nicht wiedererkannt werden.</p>
+    <p><strong>§2 Abs.15</strong> Es ist weder Staatsfraktionen, noch anderen erlaubt, Personen unnötig zu Tasern.</p>
+    <p><strong>§2 Abs.16</strong> Personen dürfen nur mit triftigem RP-Hintergrund ausgeraubt werden.</p>
+    <p><strong>§2 Abs.17</strong> Auf legalen Farmrouten ist der Diebstahl von Gegenständen aus Kofferräumen verboten.</p>
+    <p><strong>§2 Abs.18</strong> Fahrzeugdiebstahl ist in allen Safezones verboten.</p>
+    <p><strong>§2 Abs.19</strong> Leichenschändung ist erlaubt, jedoch nur bis zu einem gewissen Maß.</p>
+    <p><strong>§2 Abs.20</strong> Zivilisten dürfen maximal in einer Gruppe von 6 Personen zusammen agieren.</p>
+    <p><strong>§2 Abs.21</strong> Das Fesseln eines Spielers muss angekündigt werden.</p>
+    <p><strong>§2 Abs.22</strong> Fahrzeuge mit mindestens 2 platten Reifen dürfen nicht weiterfahren.</p>
+    <p><strong>§2 Abs.23</strong> Ingame-Support darf erst nach Ablauf der RP-Situation gerufen werden.</p>
+    <p><strong>§2 Abs.24</strong> Das OOC-Reden ist IC strengstens untersagt.</p>
+    <p><strong>§2 Abs.25</strong> In einer RP-Situation darf nicht mit dem Regelwerk oder dem Support gedroht werden.</p>
+    <p><strong>§2 Abs.26</strong> Jedes Mitglied des Polizeipräsidiums oder des Sondereinsatzkommandos ist verpflichtet auf Nachfrage seine Dienstnummer herauszugeben.</p>
+    <p><strong>§2 Abs.27</strong> Das AFK-Farmen ist verboten. Eine maximale Abwesenheit von 5 Minuten ist erlaubt.</p>
+    <p><strong>§2 Abs.28</strong> Es ist verboten vorzutäuschen, Mitglied einer staatlichen Fraktion zu sein.</p>
+    <p><strong>§2 Abs.29</strong> Bei Betreten eines Anwesens, einer Hood oder einer Fraktion darf von der wohnhaften Partei ohne RP-Hintergrund eine Schussankündigung gegeben werden.</p>
+    <p><strong>§2 Abs.30</strong> Teammitglieder im Aduty müssen im RP ignoriert werden.</p>
+    <p><strong>§2 Abs.31</strong> Fahrzeuge dürfen nicht unnötig ohne RP-Situation gerammt werden.</p>
+    <p><strong>§2 Abs.32</strong> Spieler dürfen nicht am Krankenhaus abgefangen werden.</p>
+    <p><strong>§2 Abs.33</strong> Das Durchsuchen von Spielern ist stets anzukündigen. Das Durchsuchen von bewusstlosen Personen ist nur dann erlaubt, wenn diese etwas mit der RP-Situation zu tun haben.</p>
+    <p><strong>§2 Abs.34</strong> Fahrzeugdiebstahl ist ohne vernünftigen RP-Hintergrund verboten. Gestohlene Fahrzeuge dürfen nicht getuned oder neu lackiert werden. Fahrzeuge von Staatsfraktionen dürfen nicht gestohlen werden.</p>
+    <p><strong>§2 Abs.35</strong> Fraktionsanwesen dürfen nur mit triftigem RP-Hintergrund gestürmt werden. Zur reinen Machtdemonstration dürfen Fraktionen ebenfalls nicht gestürmt werden.</p>
+    <p><strong>§2 Abs.36</strong> Fraktionen müssen sich gemäß dem realen Leben verhalten (Beispiel: Eine Mafia wie eine Mafia und ein Motorradclub wie ein Motorradclub).</p>
+    <p><strong>§2 Abs.37</strong> Sollten Spieler ausgeraubt werden, so darf diesen lediglich das abgenommen werden, was diese bei sich führen.</p>
+    <p><strong>§2 Abs.38</strong> Gambo in jeder Form ist verboten.</p>
+    <p><strong>§2 Abs.39</strong> Eine allgemeine Verkehrskontrolle gibt keinen Anlass auf eine Schießerei mit der Polizei.</p>
+    <p><strong>§2 Abs.40</strong> Die Value of Life Regel besagt, dass sich Spieler wehren dürfen, die zu 100% sicher sind, dass sie sterben werden, da sie um ihr Leben kämpfen.</p>
+
+    <h2>§3 New Life</h2>
+    <p><strong>§3 Abs.1</strong> Informationen, die während der Bewusstlosigkeit erfahren werden, dürfen nicht verwendet werden.</p>
+    <p><strong>§3 Abs.2</strong> Es ist untersagt zu sprechen, während man ohnmächtig ist.</p>
+    <p><strong>§3 Abs.3</strong> Solltet ihr bewusstlos sein, könnt ihr auf einen Sanitäter warten oder nach einer bestimmten Zeit im Krankenhaus spawnen. Solltet ihr am Krankenhaus spawnen, wurdet ihr von einem Arzt abgeholt und müsst euch trotz allem selbstständig zu einem Sanitäter begeben und behandeln lassen.</p>
+    <p><strong>§3 Abs.4</strong> Wenn ihr von einem Sanitäter aus der Bewusstlosigkeit geholt werdet, könnt/dürft ihr euch je nach Art der Verletzung an den Unfallhergang/an die Situation vorher erinnern. Verletzungen am Kopf führen zu Erinnerungsverlust.</p>
+
+    <h2>§4 Support</h2>
+    <p><strong>§4 Abs.1</strong> Die aktuelle RP-Situation muss zu Ende gespielt werden, bevor Support eingeschaltet wird.</p>
+    <p><strong>§4 Abs.2</strong> Erstattungsanträge werden nur mit einem Videobeweis bearbeitet. Dies gilt auch für Gegenstände, die durch Spielfehler verloren gehen.</p>
+    <p><strong>§4 Abs.3</strong> Nach Aufforderung des Teams hat man sich unverzüglich im Support einzufinden. Kommt man der Aufforderung nicht nach, wird dies bestraft.</p>
+    <p><strong>§4 Abs.4</strong> Es dürfen keine Support-Gespräche aufgenommen und/oder gestreamt werden.</p>
+
+    <h2>§5 Raub / Geiselnahme / Entführung</h2>
+    <p><strong>§5 Abs.1</strong> Bei einem Raub oder einer Geiselnahme müssen mindestens 4 Polizisten im Dienst sein. Ausnahme bildet der Staatsbankraub. Hier müssen mindestens 7 Polizisten im Dienst sein.</p>
+    <p><strong>§5 Abs.2</strong> Damit gegen das Polizeipräsidium agiert werden kann, müssen mindestens 7 Polizisten im Dienst sein.</p>
+    <p><strong>§5 Abs.3</strong> Bei Geiselnahme steht das RP und nicht das Geld im Vordergrund.</p>
+    <p><strong>§5 Abs.4</strong> Pro "normaler" Geisel darf maximal 10.000 € Lösegeld verlangt werden. Maximal 50.000 € bei wichtigen Personen wie z.B. der Polizeipräsident. Beim Bürgermeister darf bis zu 100.000 € verlangt werden.</p>
+    <p><strong>§5 Abs.5</strong> Auch Gegenstände können als Lösemittel eingesetzt werden. Jedoch sollte dies realistisch sein (Sprich, eine Geisel ist nicht gleich eine Langwaffe).</p>
+    <p><strong>§5 Abs.6</strong> Geiseln dürfen maximal 15 Minuten ohne eine aktive RP-Situation festgehalten werden.</p>
+    <p><strong>§5 Abs.7</strong> Bei einem Raub oder einer Geiselnahme sind Langwaffen verboten. Ausnahme ist der Staatsbankraub. Beim Staatsbankraub dürfen die Dächer jedoch nicht besetzt werden.</p>
+    <p><strong>§5 Abs.8</strong> Ein Raub darf von maximal 5 Personen durchgeführt werden. Ausnahme bildet auch hier der Staatsbankraub. Dieser darf von maximal 8 Personen durchgeführt werden.</p>
+
+    <h2>§6 Hardware</h2>
+    <p><strong>§6 Abs.1</strong> Ein gutes Mikrofon ist die Grundvoraussetzung um auf unserem Server zu spielen.</p>
+    <p><strong>§6 Abs.2</strong> Hintergrund- sowie Störgeräusche sind vor dem Server-Beitritt zu beheben.</p>
+    <p><strong>§6 Abs.3</strong> Es ist verboten, sich über andere Kommunikationsplattformen zu unterhalten. Ingame darfst du maximal 15 Minuten AFK sein.</p>
+
+    <h2>§7 Mods</h2>
+    <p><strong>§7 Abs.1</strong> Das Nutzen von Modded Crosshairs ist nicht gestattet.</p>
+    <p><strong>§7 Abs.2</strong> Mods die das reine Aussehen von GTA verändern, sind erlaubt.</p>
+    <p><strong>§7 Abs.3</strong> Das Ausnutzen von Bugs, Glitches, Spielfehlern, Hacks, Mod-Menüs oder Ähnlichem ist verboten.</p>
+    <p>Sollte eine Person eines der oben genannten nutzen, bist du verpflichtet dies zu melden, sofern du Kenntnis davon hast.</p>
+    <p><strong>§7 Abs.4</strong> Gambo Grafiken dürfen nicht genutzt werden, da sie kein richtiges RP zulassen.</p>
+
+    
+    <h2>§8 Fraktionen</h2>
+    <p><strong>§8 Abs.1</strong> Bei einem Wechsel von einer illegalen zu einer legalen Fraktion gilt eine Fraktionssperre von 24 Stunden.</p>
+    <p><strong>§8 Abs.2</strong> Bei einem Wechsel von einer legalen zu einer illegalen Fraktion gilt eine Fraktionssperre von 3 Tagen.</p>
+    <p><strong>§8 Abs.3</strong> Bei einem Wechsel von einer illegalen zu einer anderen illegalen Fraktion gilt eine Fraktionssperre von 3 Tagen.</p>
+    <p><strong>§8 Abs.4</strong> Ein Verstoß gegen die Fraktionssperre wird mit einem Bann für eine Woche bestraft.</p>
+    <p><strong>§8 Abs.5</strong> Die Fraktionssperre kann nach Absprache mit der Fraktionsverwaltung umgangen werden.</p>
+    <p><strong>§8 Abs.6</strong> Fraktionsanwesen / Organisationen dürfen nur einmal am Tag von der gleichen Fraktion gestürmt werden (siehe auch §1 Abs.3).</p>
+    <p><strong>§8 Abs.7</strong> Staatsfraktionen dürfen ihren Job auch in Safezones ausführen.</p>
+    <p><strong>§8 Abs.8</strong> Sollten Personen nicht kooperieren, dürfen diese zur Untersuchung / Befragung auf die Dienststelle gebracht werden.</p>
+    <p><strong>§8 Abs.9</strong> Polizisten dürfen keine Waffen abgenommen werden. Dazu zählen neben Langwaffen auch Pistolen, Elektroschockpistolen und Schlagstöcke. Weiterhin dürfen Zivilisten keine Waffen der Staatsfraktionen besitzen.</p>
+    <p><strong>§8 Abs.10</strong> Bündnisse zwischen Fraktionen, die nicht zu den staatlichen Fraktionen gehören, müssen bei der Fraktionsverwaltung angemeldet werden.</p>
+    <p><strong>§8 Abs.11</strong> Bei einem Blood Out vergisst die Person alles, was mit der Fraktion zu tun hat. Zusätzlich erhält die Person eine Fraktionssperre von 2 Tagen.</p>
+    <p><strong>§8 Abs.12</strong> Illegale Fraktionen dürfen maximal 20 Personen bestehen.</p>
+    <p><strong>§8 Abs.13</strong> Inoffizielle Fraktionen /zivile Gruppen dürfen aus nicht mehr als 6 Personen bestehen. Wird dies nicht beachtet, wird die Fraktion gesperrt.</p>
+    <p><strong>§8 Abs.14</strong> Die Mitarbeiter der staatlichen Fraktionen haben im Dienst stets dafür vorgesehene Uniformen zu tragen.</p>
+    <p><strong>§8 Abs.15</strong> Jeder Täter hat das Recht, seine Rechte vorgelesen zu bekommen. Dies muss maximal 3 mal geschehen. Wurden die Rechte nicht vorgelesen, so ist der Täter freizulassen.</p>
+    <p><strong>§8 Abs.16</strong> Personen, die zivil agieren, dürfen keine Fraktionsmenüs benutzen. Sollte dies trotzdem geschehen, wird die gesamte Fraktion dafür bestraft.</p>
+    <p><strong>§8 Abs.17</strong> Die Fahrzeugtransporte dürfen aufgrund der RP-technischen Notwendigkeit nicht überfallen werden.</p>
+    <p><strong>§8 Abs.18</strong> Während der Aufbauphase ist es untersagt, Staatsfraktionen anzugreifen oder zu stürmen. Ausnahme hierfür ist, wenn dies in einer laufenden RP-Situation passiert.</p>
+    <p><strong>§8 Abs.19</strong> Sobald sich zwei Fraktionen in einer aktiven RP-Situation befinden, darf sich keine dritte Partei einmischen.</p>
+
+    
+    <h2>§9 Safezones</h2>
+    <p><strong>§9 Abs.1</strong> Safezones sind:</p>
+    <ul>
+        <li>Der Flughafen</li>
+        <li>Die Krankenhäuser</li>
+        <li>Das Rathaus</li>
+    </ul>
+    <p>Spieler in Safezones dürfen nicht eingesammelt, ausgeraubt oder als Geisel genommen werden.</p>
+    <p><strong>§9 Abs.2</strong> Eine weitere Safezone sind die Tuningwerkstätten sowie die Autohäuser. Hier dürfen ebenfalls keine Waffen eingesetzt und keine Personen entführt werden. Das Demolieren von Fahrzeugen ist hier verboten. Weiterhin haben die Mitarbeiter hier das Hausrecht und dürfen Personen, die sich nicht an die Regeln halten, Hausverbot erteilen.</p>
+    <p><strong>§9 Abs.3</strong> Wenn sich eine Situation in eine Safe Zone verlagert, ist die Safezone für diese zwei betroffenen Parteien aufgehoben.</p>
+
+    <h2>§10 Todeszonen / Sperrzonen</h2>
+    <p><strong>§10 Abs.1</strong> Sperrzonen sind:</p>
+    <ul>
+        <li>Das Bundeswehrgelände</li>
+        <li>Das Staatsgefängnis</li>
+    </ul>
+    <p>Innerhalb einer Sperrzone bedarf es keiner Schussankündigung seitens der Staatsfraktionen. Nicht staatliche Fraktionen & zivile Gruppierungen brauchen dennoch eine Schussankündigung.</p>
+    <p><strong>Todeszonen sind:</strong></p>
+    <ul>
+        <li>Illegale Farmrouten</li>
+    </ul>
+    <p>Innerhalb einer Todeszone bedarf es keiner Schussankündigung.</p>
+    <p><strong>§10 Abs.2</strong> Die Polizei sowie das Sondereinsatzkommando können in bestimmten RP-Situationen Sperrzonen errichten.</p>
+    <p><strong>§10 Abs.3</strong> In einer Sperrzone braucht die Polizei sowie das Sondereinsatzkommando keine Schussankündigung. Nicht staatliche Fraktionen & zivile Gruppierungen brauchen dennoch eine Schussankündigung.</p>
+    <p><strong>§10 Abs.4</strong> Sollte ein Spieler in der Sperrzone durch die Polizei oder das Sondereinsatzkommando angeschossen werden, darf dieser das Feuer erwidern. Dies gilt jedoch nur für Spieler, die einen RP-Hintergrund haben, weswegen sie eine Sperrzone betreten. Das reine Durchfahren oder Durchlaufen einer Sperrzone gilt nicht als RP-Hintergrund.</p>
+
+    <h2>§11 Verhaltensregeln</h2>
+    <p><strong>§11 Abs.1</strong> Kannibalismus, Rassismus, Sexismus, Vergewaltigung sowie schwere Beleidigungen sind verboten.</p>
+    <p><strong>§11 Abs.2</strong> Im RP sind Beleidigungen, Extremismus und Diskriminierung bis zu einem gewissen Grad erlaubt. Wichtig ist, dass Beleidigungen Teil des Roleplays sind und nicht der einzige Inhalt. Hier wird ebenfalls eine klare Grenze zwischen RP und OOC gezogen.</p>
+    <p><strong>§11 Abs.3</strong> Trollen ist auf unserem Server strengstens verboten. Dazu gehört:</p>
+    <ul>
+        <li>Abspielen sehr lauter Musik (nur wenn sich Personen dadurch gestört fühlen)</li>
+        <li>Abspielen von Sounds oder Musik in unnötigen Situationen (nur wenn sich Personen dadurch gestört fühlen)</li>
+        <li>Geräuschbelästigung</li>
+        <li>Unzumutbare Belästigung (Telefonstreiche, unnötiges Hupen, Stalking, etc.)</li>
+        <li>Provozieren von anderen Spielern und Fraktionen ohne RP-Hintergrund</li>
+    </ul>
+</main>
+    
+    <footer class="footer">
+        <div class="footer-section">
+            <h3>Kontakt</h3>
+            <p>nur auf Discord</p>
+        </div>
+        <div class="footer-section">
+            <h3>Links</h3>
+            <a href="https://gamingelite.eu/impressum">Impressum</a>
+            <a href="https://gamingelite.eu/impressum">Datenschutz</a>
+            <a href="https://gamingelite.eu/impressum">AGB</a>
+        </div>
+        <div class="footer-section">
+            <h3>Folge uns</h3>
+            <a href="https://discord.gg/McBfjKzN">Discord</a>
+        </div>
+        <div class="footer-section">
+            <p>&copy; 2025 Nordhaven RP. Alle Rechte vorbehalten.</p>
+        </div>
+    </footer>
+</body>
+</html>

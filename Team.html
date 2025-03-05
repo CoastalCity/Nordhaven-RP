@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nordhaven RP</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: url('img/Designer.jpeg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            animation: fadeIn 2s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(30, 30, 30, 0.9);
+            padding: 20px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+        .nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 35px;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+        .nav a:hover {
+            color: #0099ff;
+        }
+        .team-member {
+            background: rgba(50, 50, 50, 0.8);
+            margin: 15px;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .team-member h2 {
+            color: #0099ff;
+        }
+        .BS {
+            color: #ffffff;
+        }
+        .dis {
+            color: #ffffff;
+        }
+        .team-PL {
+            color: rgb(239, 14, 142);
+            margin: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 100px auto;
+            max-width: 900px;
+            background: rgba(30, 30, 30, 0.8);
+        }
+        .team-TM {
+            color: rgb(151, 13, 91);
+            margin: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 100px auto;
+            max-width: 900px;
+            background: rgba(30, 30, 30, 0.8);
+        }
+        .team-EW {
+            color: rgb(0, 213, 255);
+            margin: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 100px auto;
+            max-width: 900px;
+            background: rgba(30, 30, 30, 0.8);
+        }
+        .team-FW {
+            color: rgb(195, 0, 255);
+            margin: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 100px auto;
+            max-width: 900px;
+            background: rgba(30, 30, 30, 0.8);
+        }
+        .team-SP {
+            color: rgb(255, 255, 0);
+            margin: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 100px auto;
+            max-width: 900px;
+            background: rgba(30, 30, 30, 0.8);
+        }
+        .Profil{
+            width: 70px;
+            height: 70px;
+            border-radius: 30px;
+        }
+        .footer {
+            background: rgba(20, 20, 20, 0.9);
+            padding: 30px;
+            margin-top: 5%;
+            border-radius: 10px;
+            font-size: 16px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            text-align: left;
+            color: #ffffff;
+        }
+        .footer-section {
+            max-width: 300px;
+        }
+        .footer h3 {
+            color: #0099ff;
+        }
+        .footer a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            margin: 5px 0;
+            transition: color 0.3s;
+        }
+        .footer a:hover {
+            color: #0099ff;
+        }
+    </style>
+    <link rel="icon" type="image/png" href="icon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="icon/favicon.svg" />
+    <link rel="shortcut icon" href="icon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="icon/apple-touch-icon.png" />
+    <link rel="manifest" href="icon/site.webmanifest" />
+</head>
+<body>
+    <header class="header">
+        <div class="logo">Nordhaven RP</div>
+        <nav class="nav">
+            <a href="index">Home</a>
+            <a href="Regelwerk">Regelwerk</a>
+            <a href="Team">Team</a>
+            <a href="Fraktionen">Fraktionen</a>
+        </nav>
+    </header>
+    
+    <main>
+        <div class="team-container">
+            <h1>Unser Team</h1>
+            <div class="team-PL">
+                <img class="Profil"src="img/Designer.jpeg" src="www.google.de">
+                <h2>kirby161</h2>
+                <p class="BS">Rang: Projektleitung</p>
+            </div>
+            <div class="team-PL">
+                <img class="Profil"src="img/Designer.jpeg" alt="">
+                <h2>EthanWolf</h2>
+                <p class="dis">Rang: Projektleitung</p>
+            </div>
+            <div class="team-PL">
+                <img class="Profil"src="img/Designer.jpeg" alt="">
+                <h2>LGD_Gamer_</h2>
+                <p class="dis">Rang: Management</p>
+            </div>
+            <div class="team-TM">
+                <img class="Profil"src="img/Designer.jpeg" alt="">
+                <h2>Ruben</h2>
+                <p class="dis">Rang: Management</p>
+            </div>
+            <div class="team-EW">
+                <img class="Profil"src="img/Designer.jpeg" link="">
+                <h2>JustNukeZz</h2>
+                <p class="dis">Rang: Entwickler</p>
+            </div>
+            <div class="team-FW">
+                <img class="Profil"src="img/Designer.jpeg" link="">
+                <h2>Shape</h2>
+                <p class="dis">Rang: Fraktionsverwaltung</p>
+            </div>
+            <div class="team-SP">
+                <img class="Profil"src="img/Designer.jpeg" alt="">
+                <h2>Killer-Elite3110</h2>
+                <p class="dis">Rang: Supporter</p>
+            </div>
+            <div class="team-SP">
+                <img class="Profil"src="img/Designer.jpeg" alt="">
+                <h2>Lena</h2>
+                <p class="dis">Rang: Test Supporter</p>
+            </div>
+        </div>
+    </main>
+    
+    <footer class="footer">
+        <div class="footer-section">
+            <h3>Kontakt</h3>
+            <p>nur auf Discord</p>
+        </div>
+        <div class="footer-section">
+            <h3>Links</h3>
+            <a href="https://gamingelite.eu/impressum">Impressum</a>
+            <a href="https://gamingelite.eu/impressum">Datenschutz</a>
+            <a href="https://gamingelite.eu/impressum">AGB</a>
+        </div>
+        <div class="footer-section">
+            <h3>Folge uns</h3>
+            <a href="https://discord.gg/McBfjKzN">Discord</a>
+        </div>
+        <div class="footer-section">
+            <p>&copy; 2025 Nordhaven RP. Alle Rechte vorbehalten.</p>
+        </div>
+    </footer>
+</body>
+</html>
