@@ -1,290 +1,449 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nordhaven RP</title>
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background: url('img/Designer.jpeg') no-repeat center center fixed;
-            background-size: cover;
-            color: white;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-            animation: fadeIn 2s ease-in;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(30, 30, 30, 0.9);
-            padding: 20px;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
-        .logo {
-            font-size: 28px;
-            font-weight: bold;
-            color: #ffffff;
-        }
-        .nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 35px;
-            font-size: 18px;
-            transition: color 0.3s;
-        }
-        .nav a:hover {
-            color: #0099ff;
-        }
-        @keyframes slideIn {
-            from { transform: translateY(-50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        .regelwerk {
-            padding: 80px 40px;
-            text-align: left;
-            max-width: 1200px;
-            margin: auto;
-            background: rgba(20, 20, 20, 0.9);
-            border-radius: 10px;
-        }
-        .regelwerk h2, .regelwerk h3 {
-            color: #0099ff;
-        }
-        .regelwerk p, .regelwerk ul {
-            margin-bottom: 15px;
-            font-size: 18px;
-            line-height: 1.6;
-        }
-        .regelwerk ul {
-            padding-left: 20px;
-        }
-        
-        .footer {
-            background: rgba(20, 20, 20, 0.9);
-            padding: 30px;
-            margin-top: 5%;
-            border-radius: 10px;
-            font-size: 16px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            text-align: left;
-            color: #ffffff;
-        }
-        .footer-section {
-            max-width: 300px;
-        }
-        .footer h3 {
-            color: #0099ff;
-        }
-        .footer a {
-            color: white;
-            text-decoration: none;
-            display: block;
-            margin: 5px 0;
-            transition: color 0.3s;
-        }
-        .footer a:hover {
-            color: #0099ff;
-        }
-    </style>
-    <link rel="icon" type="image/png" href="icon/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="icon/favicon.svg" />
-    <link rel="shortcut icon" href="icon/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="icon/apple-touch-icon.png" />
-    <link rel="manifest" href="icon/site.webmanifest" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nordhaven RP - Regelwerk</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="icon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="icon/favicon.svg" />
+  <link rel="shortcut icon" href="icon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="icon/apple-touch-icon.png" />
+  <link rel="manifest" href="icon/site.webmanifest" />
+  <style>
+    /* Global Styles */
+    body {
+      font-family: 'Arial', sans-serif;
+      background: url('img/Designer.jpeg') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      animation: fadeIn 2s ease-in;
+      overflow: auto;
+      scrollbar-width: none;       /* Firefox */
+      -ms-overflow-style: none;    /* IE & Edge */
+      scroll-behavior: smooth;     /* Sanftes Scrollen */
+    }
+    body::-webkit-scrollbar {       /* Chrome, Safari, Opera */
+      display: none;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    
+    /* Header */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(45deg, rgba(30,30,30,0.95), rgba(50,50,50,0.95));
+      padding: 15px 30px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    }
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      color: #ffffff;
+      text-decoration: none;
+      transition: transform 0.3s;
+    }
+    .logo:hover {
+      transform: scale(1.05);
+    }
+    /* Hamburger-Menü Button (nur auf mobilen Geräten sichtbar) */
+    .menu-toggle {
+      display: none;
+      background: transparent;
+      border: none;
+      color: white;
+      font-size: 28px;
+      cursor: pointer;
+    }
+    /* Desktop Navigation – mit extra margin-right */
+    .nav {
+      display: flex;
+      gap: 35px;
+      margin-right: 50px;
+    }
+    .nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      transition: color 0.3s;
+    }
+    .nav a:hover {
+      color: #ffc400;
+    }
+    /* Mobile Navigation */
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+        position: absolute;
+        right: 10%;
+        top: 15px;
+      }
+      .nav {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: rgba(30,30,30,0.95);
+        padding: 10px 0;
+        margin-right: 0;
+      }
+      .nav.active {
+        display: flex;
+      }
+      .nav a {
+        padding: 10px 20px;
+        border-top: 1px solid rgba(255,255,255,0.2);
+      }
+    }
+    
+    /* Table of Contents */
+    .toc {
+      background: linear-gradient(135deg, rgba(30,30,30,0.85), rgba(10,10,10,0.85));
+      padding: 20px 30px;
+      margin: 140px auto 20px; /* Abstand zum Header */
+      max-width: 1200px;
+      border-radius: 15px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.5);
+      text-align: center;   /* Immer zentriert */
+      color: #ffffff;
+    }
+    .toc h2 {
+      margin-bottom: 15px;
+      color: #ffffff;
+    }
+    .toc ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .toc li {
+      margin-bottom: 8px;
+    }
+    .toc a {
+      color: #ffffff;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .toc a:hover {
+      color: #ffc400;
+    }
+    /* Sticky TOC on larger screens */
+    @media (min-width: 1024px) {
+      .toc {
+        position: sticky;
+        top: 80px;
+      }
+    }
+    
+    /* Main Content (Regelwerk) */
+    .regelwerk {
+      padding: 50px 40px;
+      text-align: left;
+      max-width: 1200px;
+      margin: 20px auto 0;
+      background: linear-gradient(135deg, rgba(30,30,30,0.85), rgba(10,10,10,0.85));
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 15px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.6);
+    }
+    .regelwerk h1 {
+      text-align: center;
+      color: #ffc400;
+      margin-bottom: 30px;
+      font-size: 3em;
+    }
+    .regelwerk h2, 
+    .regelwerk h3 {
+      color: #0099ff;
+      margin-top: 30px;
+      padding-bottom: 5px;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+    .regelwerk p, 
+    .regelwerk ul {
+      margin-bottom: 15px;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+    .regelwerk ul {
+      padding-left: 20px;
+    }
+    /* Back-to-Top Link */
+    .back-to-top {
+      text-align: right;
+      margin-top: 20px;
+    }
+    .back-to-top a {
+      color: #ffc400;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.3s;
+    }
+    .back-to-top a:hover {
+      color: #0099ff;
+    }
+    
+    /* Footer */
+    .footer {
+      background: linear-gradient(45deg, rgba(20,20,20,0.95), rgba(10,10,10,0.95));
+      padding: 40px 30px;
+      border-top: 3px solid #ffc400;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-items: flex-start;
+      color: #f0f0f0;
+      margin-top: 50px;
+    }
+    .footer-section {
+      flex: 1 1 250px;
+      margin: 20px;
+      text-align: left;
+    }
+    .footer h3 {
+      font-size: 20px;
+      color: #ffc400;
+      margin-bottom: 15px;
+    }
+    .footer a {
+      color: #ffffff;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 8px;
+      transition: color 0.3s;
+    }
+    .footer a:hover {
+      color: #ffc400;
+    }
+    .footer p {
+      font-size: 14px;
+      margin: 0;
+    }
+  </style>
 </head>
 <body>
-    <header class="header">
-        <div class="logo">Nordhaven RP</div>
-        <nav class="nav">
-            <a href="index">Home</a>
-            <a href="Regelwerk">Regelwerk</a>
-            <a href="Team">Team</a>
-            <a href="Fraktionen">Fraktionen</a>
-        </nav>
-    </header>
+  <!-- Anker für Back-to-top -->
+  <a id="top"></a>
+  <header class="header">
+    <button class="menu-toggle" aria-label="Menü umschalten">&#9776;</button>
+    <a href="index" class="logo">Nordhaven RP</a>
+    <nav class="nav">
+      <a href="index">Home</a>
+      <a href="Regelwerk">Regelwerk</a>
+      <a href="Team">Team</a>
+      <a href="Fraktionen">Fraktionen</a>
+    </nav>
+  </header>
+  
+  <main>
+    <!-- Table of Contents -->
+    <section class="toc">
+      <h2>Inhalt</h2>
+      <ul>
+        <li><a href="#allgemeine-regeln">§1 Allgemeine Regeln</a></li>
+        <li><a href="#speicherung">Speicherung von Persönlichen Daten</a></li>
+        <li><a href="#allgemeines-wissen">§1.1 Allgemeines Wissen</a></li>
+        <li><a href="#offroading">Offroading</a></li>
+        <li><a href="#power-rp">Power-RP</a></li>
+        <li><a href="#combat-logging">Combat Logging</a></li>
+        <li><a href="#hacking">§2 Hacking und Modifizierung</a></li>
+        <li><a href="#charakter">§3 Charaktererstellung &amp; Nickname</a></li>
+        <li><a href="#maskierung">§4 Maskierung</a></li>
+        <li><a href="#new-life">§5 New-Life-Regel</a></li>
+        <li><a href="#fraktionen">§6 Fraktionen</a></li>
+        <li><a href="#schuss">§7 Schuss-Ankündigung</a></li>
+        <li><a href="#geiselnahme">§8 Geiselnahme, Raub &amp; Überfall</a></li>
+        <li><a href="#support">§9 Support</a></li>
+        <li><a href="#streaming">§10 Streaming</a></li>
+        <li><a href="#metagaming">Metagaming</a></li>
+        <li><a href="#backseat">BSG-Backseat Gaming</a></li>
+        <li><a href="#afk">§11 AFK-Regelung</a></li>
+        <li><a href="#grauzonen">§12 Grauzonen</a></li>
+      </ul>
+    </section>
     
-    <main class="regelwerk">
-    <h1>Regelwerk</h1>
-    <h2>§1 Allgemeine Regeln</h2>
-    <p><strong>§1 Abs.1</strong> Alle im Regelwerk stehenden Regeln sind ausnahmslos einzuhalten. Das Ausnutzen von Lücken im Regelwerk wird bestraft.</p>
-    <p><strong>§1 Abs.2</strong> Das Mindestalter auf unserem RP-Server ist 16 Jahre. Ebenso wird auf angemessene geistige Reife geachtet. Die Einschätzung dieser Faktoren obliegt dem Team.</p>
-    <p><strong>§1 Abs.3</strong> Unwissenheit schützt vor Strafe nicht. Aussagen wie „Das wusste ich nicht“ haben bei uns keinen Stellenwert.</p>
-    <p><strong>§1 Abs.4</strong> Durch das Verbinden auf unseren Gameserver willigst du ein, dass deine Handlungen im Spiel aufgezeichnet werden.</p>
-    <p><strong>§1 Abs.5</strong> Du trägst die Verantwortung über deinen Account sowie dein Handeln.</p>
-    <p><strong>§1 Abs.6</strong> Es ist verboten, mit mehreren Steam-Accounts auf dem Server zu spielen und wird mit einem permanenten Bann bestraft.</p>
-    <p><strong>§1 Abs.7</strong> RP-Situationen sowie auch Beleidigungen sind stets IC zu nehmen. Trenne IC und OOC.</p>
-    <p><strong>§1 Abs.8</strong> Das Verkaufen von Ingame-Inhalten gegen Echtgeld ist verboten.</p>
-
-    <h2>§2 Roleplay</h2>
-    <p><strong>§2 Abs.1</strong> Das Leben eures RP-Charakters ist euer höchstes Gut. Setze dies nicht unnötig aufs Spiel.</p>
-    <p><strong>§2 Abs.2</strong> RDM (Random Deathmatch) ist strengstens verboten.</p>
-    <p><strong>§2 Abs.3</strong> VDM (Vehicle Deathmatch) ist strengstens verboten, es sei denn, es gibt einen RP-Hintergrund.</p>
-    <p><strong>§2 Abs.4</strong> Power-RP ist untersagt. Beispiel: „Spring von der Brücke oder ich töte dich.“</p>
-    <p><strong>§2 Abs.5</strong> Metagaming beschreibt das Verwenden von OOC-Informationen IC.</p>
-    <p><strong>§2 Abs.6</strong> Stimmenverzerrer sind nur bei Anrufen erlaubt.</p>
-    <p><strong>§2 Abs.7</strong> Staatsfahrzeuge dürfen nicht gestohlen werden, außer in lebensbedrohlichen Situationen.</p>
-    <p><strong>§2 Abs.8</strong> Combat Logging ist verboten.</p>
-    <p><strong>§2 Abs.9</strong> Schussankündigungen müssen eingehalten werden.</p>
-    <p><strong>§2 Abs.10</strong> Drive-Bys sind nur mit Pistolen erlaubt.</p>
-    <p><strong>§2 Abs.12</strong> Korruption in staatlichen Fraktionen ist erst ab der Führungsebene strengstens verboten. Das Weitergeben von Waffen ist Staatsfraktionen untersagt.</p>
-    <p><strong>§2 Abs.13</strong> Gang Baiting sowie Cop Baiting ist verboten.</p>
-    <p><strong>§2 Abs.14</strong> Maskierte Personen dürfen nicht wiedererkannt werden.</p>
-    <p><strong>§2 Abs.15</strong> Es ist weder Staatsfraktionen, noch anderen erlaubt, Personen unnötig zu Tasern.</p>
-    <p><strong>§2 Abs.16</strong> Personen dürfen nur mit triftigem RP-Hintergrund ausgeraubt werden.</p>
-    <p><strong>§2 Abs.17</strong> Auf legalen Farmrouten ist der Diebstahl von Gegenständen aus Kofferräumen verboten.</p>
-    <p><strong>§2 Abs.18</strong> Fahrzeugdiebstahl ist in allen Safezones verboten.</p>
-    <p><strong>§2 Abs.19</strong> Leichenschändung ist erlaubt, jedoch nur bis zu einem gewissen Maß.</p>
-    <p><strong>§2 Abs.20</strong> Zivilisten dürfen maximal in einer Gruppe von 6 Personen zusammen agieren.</p>
-    <p><strong>§2 Abs.21</strong> Das Fesseln eines Spielers muss angekündigt werden.</p>
-    <p><strong>§2 Abs.22</strong> Fahrzeuge mit mindestens 2 platten Reifen dürfen nicht weiterfahren.</p>
-    <p><strong>§2 Abs.23</strong> Ingame-Support darf erst nach Ablauf der RP-Situation gerufen werden.</p>
-    <p><strong>§2 Abs.24</strong> Das OOC-Reden ist IC strengstens untersagt.</p>
-    <p><strong>§2 Abs.25</strong> In einer RP-Situation darf nicht mit dem Regelwerk oder dem Support gedroht werden.</p>
-    <p><strong>§2 Abs.26</strong> Jedes Mitglied des Polizeipräsidiums oder des Sondereinsatzkommandos ist verpflichtet auf Nachfrage seine Dienstnummer herauszugeben.</p>
-    <p><strong>§2 Abs.27</strong> Das AFK-Farmen ist verboten. Eine maximale Abwesenheit von 5 Minuten ist erlaubt.</p>
-    <p><strong>§2 Abs.28</strong> Es ist verboten vorzutäuschen, Mitglied einer staatlichen Fraktion zu sein.</p>
-    <p><strong>§2 Abs.29</strong> Bei Betreten eines Anwesens, einer Hood oder einer Fraktion darf von der wohnhaften Partei ohne RP-Hintergrund eine Schussankündigung gegeben werden.</p>
-    <p><strong>§2 Abs.30</strong> Teammitglieder im Aduty müssen im RP ignoriert werden.</p>
-    <p><strong>§2 Abs.31</strong> Fahrzeuge dürfen nicht unnötig ohne RP-Situation gerammt werden.</p>
-    <p><strong>§2 Abs.32</strong> Spieler dürfen nicht am Krankenhaus abgefangen werden.</p>
-    <p><strong>§2 Abs.33</strong> Das Durchsuchen von Spielern ist stets anzukündigen. Das Durchsuchen von bewusstlosen Personen ist nur dann erlaubt, wenn diese etwas mit der RP-Situation zu tun haben.</p>
-    <p><strong>§2 Abs.34</strong> Fahrzeugdiebstahl ist ohne vernünftigen RP-Hintergrund verboten. Gestohlene Fahrzeuge dürfen nicht getuned oder neu lackiert werden. Fahrzeuge von Staatsfraktionen dürfen nicht gestohlen werden.</p>
-    <p><strong>§2 Abs.35</strong> Fraktionsanwesen dürfen nur mit triftigem RP-Hintergrund gestürmt werden. Zur reinen Machtdemonstration dürfen Fraktionen ebenfalls nicht gestürmt werden.</p>
-    <p><strong>§2 Abs.36</strong> Fraktionen müssen sich gemäß dem realen Leben verhalten (Beispiel: Eine Mafia wie eine Mafia und ein Motorradclub wie ein Motorradclub).</p>
-    <p><strong>§2 Abs.37</strong> Sollten Spieler ausgeraubt werden, so darf diesen lediglich das abgenommen werden, was diese bei sich führen.</p>
-    <p><strong>§2 Abs.38</strong> Gambo in jeder Form ist verboten.</p>
-    <p><strong>§2 Abs.39</strong> Eine allgemeine Verkehrskontrolle gibt keinen Anlass auf eine Schießerei mit der Polizei.</p>
-    <p><strong>§2 Abs.40</strong> Die Value of Life Regel besagt, dass sich Spieler wehren dürfen, die zu 100% sicher sind, dass sie sterben werden, da sie um ihr Leben kämpfen.</p>
-
-    <h2>§3 New Life</h2>
-    <p><strong>§3 Abs.1</strong> Informationen, die während der Bewusstlosigkeit erfahren werden, dürfen nicht verwendet werden.</p>
-    <p><strong>§3 Abs.2</strong> Es ist untersagt zu sprechen, während man ohnmächtig ist.</p>
-    <p><strong>§3 Abs.3</strong> Solltet ihr bewusstlos sein, könnt ihr auf einen Sanitäter warten oder nach einer bestimmten Zeit im Krankenhaus spawnen. Solltet ihr am Krankenhaus spawnen, wurdet ihr von einem Arzt abgeholt und müsst euch trotz allem selbstständig zu einem Sanitäter begeben und behandeln lassen.</p>
-    <p><strong>§3 Abs.4</strong> Wenn ihr von einem Sanitäter aus der Bewusstlosigkeit geholt werdet, könnt/dürft ihr euch je nach Art der Verletzung an den Unfallhergang/an die Situation vorher erinnern. Verletzungen am Kopf führen zu Erinnerungsverlust.</p>
-
-    <h2>§4 Support</h2>
-    <p><strong>§4 Abs.1</strong> Die aktuelle RP-Situation muss zu Ende gespielt werden, bevor Support eingeschaltet wird.</p>
-    <p><strong>§4 Abs.2</strong> Erstattungsanträge werden nur mit einem Videobeweis bearbeitet. Dies gilt auch für Gegenstände, die durch Spielfehler verloren gehen.</p>
-    <p><strong>§4 Abs.3</strong> Nach Aufforderung des Teams hat man sich unverzüglich im Support einzufinden. Kommt man der Aufforderung nicht nach, wird dies bestraft.</p>
-    <p><strong>§4 Abs.4</strong> Es dürfen keine Support-Gespräche aufgenommen und/oder gestreamt werden.</p>
-
-    <h2>§5 Raub / Geiselnahme / Entführung</h2>
-    <p><strong>§5 Abs.1</strong> Bei einem Raub oder einer Geiselnahme müssen mindestens 4 Polizisten im Dienst sein. Ausnahme bildet der Staatsbankraub. Hier müssen mindestens 7 Polizisten im Dienst sein.</p>
-    <p><strong>§5 Abs.2</strong> Damit gegen das Polizeipräsidium agiert werden kann, müssen mindestens 7 Polizisten im Dienst sein.</p>
-    <p><strong>§5 Abs.3</strong> Bei Geiselnahme steht das RP und nicht das Geld im Vordergrund.</p>
-    <p><strong>§5 Abs.4</strong> Pro "normaler" Geisel darf maximal 10.000 € Lösegeld verlangt werden. Maximal 50.000 € bei wichtigen Personen wie z.B. der Polizeipräsident. Beim Bürgermeister darf bis zu 100.000 € verlangt werden.</p>
-    <p><strong>§5 Abs.5</strong> Auch Gegenstände können als Lösemittel eingesetzt werden. Jedoch sollte dies realistisch sein (Sprich, eine Geisel ist nicht gleich eine Langwaffe).</p>
-    <p><strong>§5 Abs.6</strong> Geiseln dürfen maximal 15 Minuten ohne eine aktive RP-Situation festgehalten werden.</p>
-    <p><strong>§5 Abs.7</strong> Bei einem Raub oder einer Geiselnahme sind Langwaffen verboten. Ausnahme ist der Staatsbankraub. Beim Staatsbankraub dürfen die Dächer jedoch nicht besetzt werden.</p>
-    <p><strong>§5 Abs.8</strong> Ein Raub darf von maximal 5 Personen durchgeführt werden. Ausnahme bildet auch hier der Staatsbankraub. Dieser darf von maximal 8 Personen durchgeführt werden.</p>
-
-    <h2>§6 Hardware</h2>
-    <p><strong>§6 Abs.1</strong> Ein gutes Mikrofon ist die Grundvoraussetzung um auf unserem Server zu spielen.</p>
-    <p><strong>§6 Abs.2</strong> Hintergrund- sowie Störgeräusche sind vor dem Server-Beitritt zu beheben.</p>
-    <p><strong>§6 Abs.3</strong> Es ist verboten, sich über andere Kommunikationsplattformen zu unterhalten. Ingame darfst du maximal 15 Minuten AFK sein.</p>
-
-    <h2>§7 Mods</h2>
-    <p><strong>§7 Abs.1</strong> Das Nutzen von Modded Crosshairs ist nicht gestattet.</p>
-    <p><strong>§7 Abs.2</strong> Mods die das reine Aussehen von GTA verändern, sind erlaubt.</p>
-    <p><strong>§7 Abs.3</strong> Das Ausnutzen von Bugs, Glitches, Spielfehlern, Hacks, Mod-Menüs oder Ähnlichem ist verboten.</p>
-    <p>Sollte eine Person eines der oben genannten nutzen, bist du verpflichtet dies zu melden, sofern du Kenntnis davon hast.</p>
-    <p><strong>§7 Abs.4</strong> Gambo Grafiken dürfen nicht genutzt werden, da sie kein richtiges RP zulassen.</p>
-
-    
-    <h2>§8 Fraktionen</h2>
-    <p><strong>§8 Abs.1</strong> Bei einem Wechsel von einer illegalen zu einer legalen Fraktion gilt eine Fraktionssperre von 24 Stunden.</p>
-    <p><strong>§8 Abs.2</strong> Bei einem Wechsel von einer legalen zu einer illegalen Fraktion gilt eine Fraktionssperre von 3 Tagen.</p>
-    <p><strong>§8 Abs.3</strong> Bei einem Wechsel von einer illegalen zu einer anderen illegalen Fraktion gilt eine Fraktionssperre von 3 Tagen.</p>
-    <p><strong>§8 Abs.4</strong> Ein Verstoß gegen die Fraktionssperre wird mit einem Bann für eine Woche bestraft.</p>
-    <p><strong>§8 Abs.5</strong> Die Fraktionssperre kann nach Absprache mit der Fraktionsverwaltung umgangen werden.</p>
-    <p><strong>§8 Abs.6</strong> Fraktionsanwesen / Organisationen dürfen nur einmal am Tag von der gleichen Fraktion gestürmt werden (siehe auch §1 Abs.3).</p>
-    <p><strong>§8 Abs.7</strong> Staatsfraktionen dürfen ihren Job auch in Safezones ausführen.</p>
-    <p><strong>§8 Abs.8</strong> Sollten Personen nicht kooperieren, dürfen diese zur Untersuchung / Befragung auf die Dienststelle gebracht werden.</p>
-    <p><strong>§8 Abs.9</strong> Polizisten dürfen keine Waffen abgenommen werden. Dazu zählen neben Langwaffen auch Pistolen, Elektroschockpistolen und Schlagstöcke. Weiterhin dürfen Zivilisten keine Waffen der Staatsfraktionen besitzen.</p>
-    <p><strong>§8 Abs.10</strong> Bündnisse zwischen Fraktionen, die nicht zu den staatlichen Fraktionen gehören, müssen bei der Fraktionsverwaltung angemeldet werden.</p>
-    <p><strong>§8 Abs.11</strong> Bei einem Blood Out vergisst die Person alles, was mit der Fraktion zu tun hat. Zusätzlich erhält die Person eine Fraktionssperre von 2 Tagen.</p>
-    <p><strong>§8 Abs.12</strong> Illegale Fraktionen dürfen maximal 20 Personen bestehen.</p>
-    <p><strong>§8 Abs.13</strong> Inoffizielle Fraktionen /zivile Gruppen dürfen aus nicht mehr als 6 Personen bestehen. Wird dies nicht beachtet, wird die Fraktion gesperrt.</p>
-    <p><strong>§8 Abs.14</strong> Die Mitarbeiter der staatlichen Fraktionen haben im Dienst stets dafür vorgesehene Uniformen zu tragen.</p>
-    <p><strong>§8 Abs.15</strong> Jeder Täter hat das Recht, seine Rechte vorgelesen zu bekommen. Dies muss maximal 3 mal geschehen. Wurden die Rechte nicht vorgelesen, so ist der Täter freizulassen.</p>
-    <p><strong>§8 Abs.16</strong> Personen, die zivil agieren, dürfen keine Fraktionsmenüs benutzen. Sollte dies trotzdem geschehen, wird die gesamte Fraktion dafür bestraft.</p>
-    <p><strong>§8 Abs.17</strong> Die Fahrzeugtransporte dürfen aufgrund der RP-technischen Notwendigkeit nicht überfallen werden.</p>
-    <p><strong>§8 Abs.18</strong> Während der Aufbauphase ist es untersagt, Staatsfraktionen anzugreifen oder zu stürmen. Ausnahme hierfür ist, wenn dies in einer laufenden RP-Situation passiert.</p>
-    <p><strong>§8 Abs.19</strong> Sobald sich zwei Fraktionen in einer aktiven RP-Situation befinden, darf sich keine dritte Partei einmischen.</p>
-
-    
-    <h2>§9 Safezones</h2>
-    <p><strong>§9 Abs.1</strong> Safezones sind:</p>
-    <ul>
-        <li>Der Flughafen</li>
-        <li>Die Krankenhäuser</li>
-        <li>Das Rathaus</li>
-    </ul>
-    <p>Spieler in Safezones dürfen nicht eingesammelt, ausgeraubt oder als Geisel genommen werden.</p>
-    <p><strong>§9 Abs.2</strong> Eine weitere Safezone sind die Tuningwerkstätten sowie die Autohäuser. Hier dürfen ebenfalls keine Waffen eingesetzt und keine Personen entführt werden. Das Demolieren von Fahrzeugen ist hier verboten. Weiterhin haben die Mitarbeiter hier das Hausrecht und dürfen Personen, die sich nicht an die Regeln halten, Hausverbot erteilen.</p>
-    <p><strong>§9 Abs.3</strong> Wenn sich eine Situation in eine Safe Zone verlagert, ist die Safezone für diese zwei betroffenen Parteien aufgehoben.</p>
-
-    <h2>§10 Todeszonen / Sperrzonen</h2>
-    <p><strong>§10 Abs.1</strong> Sperrzonen sind:</p>
-    <ul>
-        <li>Das Bundeswehrgelände</li>
-        <li>Das Staatsgefängnis</li>
-    </ul>
-    <p>Innerhalb einer Sperrzone bedarf es keiner Schussankündigung seitens der Staatsfraktionen. Nicht staatliche Fraktionen & zivile Gruppierungen brauchen dennoch eine Schussankündigung.</p>
-    <p><strong>Todeszonen sind:</strong></p>
-    <ul>
-        <li>Illegale Farmrouten</li>
-    </ul>
-    <p>Innerhalb einer Todeszone bedarf es keiner Schussankündigung.</p>
-    <p><strong>§10 Abs.2</strong> Die Polizei sowie das Sondereinsatzkommando können in bestimmten RP-Situationen Sperrzonen errichten.</p>
-    <p><strong>§10 Abs.3</strong> In einer Sperrzone braucht die Polizei sowie das Sondereinsatzkommando keine Schussankündigung. Nicht staatliche Fraktionen & zivile Gruppierungen brauchen dennoch eine Schussankündigung.</p>
-    <p><strong>§10 Abs.4</strong> Sollte ein Spieler in der Sperrzone durch die Polizei oder das Sondereinsatzkommando angeschossen werden, darf dieser das Feuer erwidern. Dies gilt jedoch nur für Spieler, die einen RP-Hintergrund haben, weswegen sie eine Sperrzone betreten. Das reine Durchfahren oder Durchlaufen einer Sperrzone gilt nicht als RP-Hintergrund.</p>
-
-    <h2>§11 Verhaltensregeln</h2>
-    <p><strong>§11 Abs.1</strong> Kannibalismus, Rassismus, Sexismus, Vergewaltigung sowie schwere Beleidigungen sind verboten.</p>
-    <p><strong>§11 Abs.2</strong> Im RP sind Beleidigungen, Extremismus und Diskriminierung bis zu einem gewissen Grad erlaubt. Wichtig ist, dass Beleidigungen Teil des Roleplays sind und nicht der einzige Inhalt. Hier wird ebenfalls eine klare Grenze zwischen RP und OOC gezogen.</p>
-    <p><strong>§11 Abs.3</strong> Trollen ist auf unserem Server strengstens verboten. Dazu gehört:</p>
-    <ul>
-        <li>Abspielen sehr lauter Musik (nur wenn sich Personen dadurch gestört fühlen)</li>
-        <li>Abspielen von Sounds oder Musik in unnötigen Situationen (nur wenn sich Personen dadurch gestört fühlen)</li>
-        <li>Geräuschbelästigung</li>
-        <li>Unzumutbare Belästigung (Telefonstreiche, unnötiges Hupen, Stalking, etc.)</li>
-        <li>Provozieren von anderen Spielern und Fraktionen ohne RP-Hintergrund</li>
-    </ul>
-</main>
-    
-    <footer class="footer">
-        <div class="footer-section">
-            <h3>Kontakt</h3>
-            <p>nur auf Discord</p>
-        </div>
-        <div class="footer-section">
-            <h3>Links</h3>
-            <a href="https://gamingelite.eu/impressum">Impressum</a>
-            <a href="https://gamingelite.eu/impressum">Datenschutz</a>
-            <a href="https://gamingelite.eu/impressum">AGB</a>
-        </div>
-        <div class="footer-section">
-            <h3>Folge uns</h3>
-            <a href="https://discord.com/invite/nordhaven-rp">Discord</a>
-        </div>
-        <div class="footer-section">
-            <p>&copy; 2025 Nordhaven RP. Alle Rechte vorbehalten.</p>
-        </div>
-    </footer>
+    <!-- Regelwerk Content -->
+    <section class="regelwerk">
+      <h1>Regelwerk</h1>
+      
+      <p>NordHaven Hardcore RP<br>Regelwerk</p>
+      <p>Folgendes Regelwerk ist stets zu beachten! Bei Missachtung steht es dem Serverteam frei, Sanktionen auszusprechen! Bei wiederholter Zuwiderhandlung folgt der Ausschluss aus der Community und dem Verbot der Nutzung des genannten FiveM Servers!</p>
+      
+      <h2 id="speicherung">Speicherung von Persönlichen Daten</h2>
+      <p>Beim Akzeptieren der Serverregeln stimmt man der Speicherung von persönlichen Daten zu. Dazu gehört nur die IP-Adresse. Wir bekommen keine anderen Daten durch das Betreten des Servers. Die IP-Adresse bleibt intern und wird nicht weitergegeben.</p>
+      
+      <h2 id="allgemeine-regeln">§1 Allgemeine Regeln für jeden Nutzer!</h2>
+      <ul>
+        <li>Jeder ist gleich. Niemand darf wegen seines Aussehens, seines Geschlechts, seiner Religion, seiner sexuellen Orientierung oder aus anderen Beweggründen diskriminiert oder benachteiligt werden.</li>
+        <li>OOC (Out of Character) und IC (In Character) sind voneinander zu trennen.</li>
+        <li>Nordhaven ist eine Hafenstadt. Verhaltet euch dementsprechend und lasst sie uns gemeinsam groß werden.</li>
+        <li>Gefesselte Personen dürfen nicht grundlos zurückgelassen werden.</li>
+        <li>Fahrschüler dürfen nicht durch andere Spieler benachteiligt werden.</li>
+        <li>Bei Motorrädern ab einem kaputten Reifen darf man nur noch 50 km/h fahren, sobald beide kaputt sind – "Rutscht es zu sehr" und man fällt runter, kann dementsprechend nicht weiterfahren.</li>
+        <li>Soundboards, die als Radio verwendet oder eine RP-Situation realistischer darstellen, sind erlaubt. Die Benutzung darf andere Spieler jedoch nicht stören – ist dies der Fall, sind sämtliche Sounds abzuschalten.</li>
+        <li>Rassistische Äußerungen sind nicht gestattet und werden bestraft.</li>
+        <li>Extremismus ist ebenfalls nicht gestattet.</li>
+        <li>Jegliche sexuelle Belästigung/Mobbing wird auf dem Server nicht geduldet. Hierbei gehen OOC &amp; IC getrennte Wege.</li>
+        <li>15 Minuten vor und 15 Minuten nach dem Serverrestart dürfen keine Aktionen gestartet werden (z. B. Überfälle, Entführungen, Gangkriege etc.).</li>
+      </ul>
+      <p>Das Handeln mit Echtgeld ist grundsätzlich verboten! Das Spielen auf dem Server ist ab dem 16. Lebensjahr erlaubt. Das Team behält sich das Recht einer Kontrolle vor.</p>
+      
+      <h2 id="allgemeines-wissen">§1.1 Allgemeines Wissen</h2>
+      <p><strong>In Character (IC):</strong> Du darfst nur Informationen und Wissen verwenden, das du IC erfahren hast. Discord-Informationen gehören nicht dazu.</p>
+      <p><strong>Out Of Character (OOC):</strong> Alles, was außerhalb des Spiels stattfindet, ist OOC und darf nicht IC verwendet werden.</p>
+      <p><strong>Random Deathmatch (RDM):</strong> Das Angreifen oder Verletzen von Mitspielern ohne RP-Hintergrund ist verboten.</p>
+      <p><strong>Vehicle Deathmatch (VDM):</strong> Das absichtliche Überfahren von anderen Spielern ist verboten (Ausnahmesituationen sind gestattet).</p>
+      <p><strong>RP-Flucht:</strong> Das Verlassen des Servers innerhalb einer aktiven RP-Situation ist strengstens untersagt. Dazu gehört auch das Flüchten in eine für andere nicht begehbare Wohnung/Firma oder andere Gebäude.</p>
+      <p><strong>Fail-RP:</strong> Unrealistische Aktionen sind nicht gestattet. Beispiele:
+        <br>– Mit einem Supersportwagen Offroad fahren.
+        <br>– Mit einem demolierten Fahrzeug weiterfahren.
+        <br>– Mit 200 km/h eine Schanze hochfahren.
+        <br>– Ein komplett zerstörtes Fahrzeug fahren oder reparieren.
+        <br>– Nach einer schweren Verletzung so tun, als wäre nie etwas geschehen.</p>
+      
+      <h2 id="offroading">Offroading</h2>
+      <p>Folgende Fahrzeuge dürfen offroad fahren:</p>
+      <ul>
+        <li>Geländefahrzeuge</li>
+        <li>Fahrräder</li>
+        <li>Militärfahrzeuge</li>
+        <li>Motorräder, die auf Offroad spezialisiert sind (z. B. Sanchez)</li>
+      </ul>
+      
+      <h2 id="power-rp">Power-RP</h2>
+      <p>Das Erfinden von Personen, Gütern und/oder Gegenständen zur Vorteilsverschaffung des eigenen Charakters oder eines Dritten fällt unter Power-RP und ist untersagt. Ebenso ist es untersagt, in einer RP-Situation seinem Gegenüber keinen Ausweg zu bieten (z. B.: "Spring von der Brücke oder ich knalle dich ab!")</p>
+      
+      <h2 id="combat-logging">Combat Logging</h2>
+      <p>Das absichtliche Schließen des Spiels während einer RP-Situation, um beispielsweise den Inhalt des Inventars zu retten, ist untersagt.</p>
+      
+      <h2 id="hacking">§2 Hacking und Modifizierung der Spieldateien</h2>
+      <p>Spieler dürfen keine externe Software benutzen, die ihnen Vorteile verschafft:</p>
+      <ul>
+        <li>Aimbot</li>
+        <li>Mods, die bewusst Objekte entfernen (Himmel, Mülltonnen etc.). (Ausnahmen werden bei sehr schlechter Hardware gestattet.)</li>
+        <li>Alles, was Waffenschüsse erkennbarer macht etc.</li>
+        <li>ESP</li>
+        <li>Jegliches Mod-Menü im Allgemeinen!</li>
+      </ul>
+      <p>Erlaubte Modifikationen sind z. B.:
+        <br>– Grafikmodi wie Redux oder Natural Vision Evolved
+        <br>– Reshade (ohne Einstellungen, die einen Vorteil verschaffen)
+        <br>– Modifikationen der Waffen, die nur für den Spieler sichtbar sind und keinen Vorteil bringen (z. B. ein Messer, das zu einem "grünen Messer" wird)</p>
+      
+      <h2 id="charakter">§3 Charaktererstellung &amp; Nickname</h2>
+      <p>Jeder Roleplay-Charakter sollte einzigartig sein. Daher sollte sich jeder Spieler Gedanken über die Eigenschaften, das Verhalten und die Geschichte seines Charakters machen, bevor er mit dem RP startet.</p>
+      <p>Das Spielen von mentalen Krankheiten ist nur dann geduldet, wenn diese dem Charakter entsprechen und keinen Vorteil verschaffen. Lebensbedrohliche Krankheiten sind nicht erwünscht, außer sie versprechen gute RP-Interaktionen (z. B. ein Chemielehrer mit Krebs). Dabei ist zu beachten, dass beim Verwenden bekannter Charaktere der Name abgeändert werden muss (z. B. Walter White wird zu Waldfried Black). Bekanntheiten werden ausgeschlossen – ein ähnlicher Name führt zu einem permanenten Ausschluss.</p>
+      <p>Der Nickname darf nicht anstößig sein und keine Beleidigungen oder rassistische Formulierungen enthalten. Das Nachahmen von Personen des öffentlichen Lebens oder deren Vergangenheit (z. B. Wilma Hartmann) ist untersagt. Das Serverteam behält sich vor, sämtliche Sonderzeichen (z. B. +, #, -, {}, [], (), usw.) zu verbieten.</p>
+      
+      <h2 id="maskierung">§4 Maskierung</h2>
+      <ul>
+        <li>Ein maskierter Spieler kann nicht allein an der Stimme identifiziert werden.</li>
+        <li>Personen können für 1 Stunde mit ihrer Kleidung identifiziert werden. Diese Regel gilt nicht für Mitglieder einer Fraktion – hier wird an der Kleidung erkannt.</li>
+        <li>Stimmverzerrer sind nur am Telefon erlaubt, um die Identität zu schützen.</li>
+        <li>Unter "Vollmaskierung" versteht man, wenn mindestens Mund und Nase bedeckt sind. Ein Bart zählt nicht als Maskierung.</li>
+      </ul>
+      
+      <h2 id="new-life">§5 New-Life-Regel</h2>
+      <p>Nachdem man von einem Mediziner reanimiert wurde, darf man sich an alles erinnern – außer an das, was während der Bewusstlosigkeit passiert ist.</p>
+      <p>Man darf nicht an derselben RP-Situation erneut teilnehmen und sich 30 Minuten lang dem Ort des Geschehens nicht nähern. Wenn man ausblutet (beim Notfallmediziner aufwacht), hat man alles vergessen, was während des gesamten IC-Lebens passiert ist.</p>
+      
+      <h2 id="fraktionen">§6 Fraktionen</h2>
+      <p><strong>Funktionssperre:</strong> Sobald du aus deiner Fraktion austrittst, musst du 7 Tage warten, bis du dich einer neuen Fraktion anschließen kannst. Für Spieler, die ihren Job häufig wechseln, erhöht sich diese Wartezeit auf 14 Tage!</p>
+      
+      <h2 id="schuss">§7 Schuss-Ankündigung</h2>
+      <p>Schuss-Ankündigungen gibt es nicht – es bedarf lediglich eines triftigen Grundes. Eine Schuss-Ankündigung gilt automatisch auch für beteiligte Fraktionsmitglieder.</p>
+      
+      <h2 id="geiselnahme">§8 Geiselnahme, Raub &amp; Überfall</h2>
+      <p>Bei einem Überfall steht das RP im Vordergrund.</p>
+      <p>Ein Ladenraub ist ab 2 Polizisten möglich.</p>
+      <p><strong>Anzahl der erlaubten Täter bei Überfällen:</strong></p>
+      <ul>
+        <li>Ladenraub: 1 bis 4 Täter (auch bei einer Gang gilt diese Regel)</li>
+      </ul>
+      <p>Es dürfen maximal 5 Geiseln genommen werden. Für Geiseln dürfen maximal 20.000€ gefordert werden. Fake-Geiseln sind strengstens verboten und werden mit einem Bann bestraft.</p>
+      
+      <h2 id="support">§9 Support</h2>
+      <ul>
+        <li>Supportfälle müssen innerhalb von 24 Stunden gemeldet werden, ansonsten werden diese nicht bearbeitet (außer bei schweren Vergehen wie Bugusing oder Cheating).</li>
+        <li>Ein Supportfall kann nur von beteiligten Personen gemeldet werden.</li>
+        <li>Clips/Livestreams dürfen nur von betroffenen Personen verwendet werden. Live Streams müssen mit genauer Timestamp (Uhrzeit) übermittelt werden.</li>
+        <li>Supportfälle werden ohne Beweismaterial nicht bearbeitet. Clips sollten die gesamte Situation umfassen und der gesamte Ton muss zu hören sein.</li>
+        <li>Erstattungen erfolgen nur mit ersichtlichem Videobeweis – ohne Clip können keine Erstattungen erfolgen!</li>
+        <li>Bugs/Glitches müssen im Support oder per Ticket gemeldet werden.</li>
+        <li>Wenn ungewöhnlich hohe Geldsummen oder Waffen von einem vermeintlichen Cheater geschenkt werden, muss dies gemeldet und darf bis zur Klärung nicht ausgegeben werden.</li>
+      </ul>
+      
+      <h2 id="streaming">§10 Streaming</h2>
+      <ul>
+        <li>Zum Streamen auf unserem Server ist keine Erlaubnis nötig, jedoch müssen die allgemeinen Streaming-Regeln beachtet werden:</li>
+        <li>Das Streamen von Support-Gesprächen ist untersagt.</li>
+        <li>Du repräsentierst den Server mit deinem Roleplay – behalte dies stets im Hinterkopf.</li>
+        <li>Wichtig: Die Inhalte sollten mit [Nordhaven RP] gekennzeichnet und der Discord-Server verlinkt werden.</li>
+        <li>Als Streamer genießt du keinen besonderen Schutz – Regelverstöße werden auch über den Stream sanktioniert.</li>
+      </ul>
+      
+      <h2 id="metagaming">Metagaming</h2>
+      <p>Das Nutzen von Informationen, die dein IC-Charakter nicht eigenständig erfahren hat (z. B. durch Anschauen eines Streams, um OOC-Informationen zu erlangen) ist verboten. Auch Absprachen OOC sind untersagt!</p>
+      
+      <h2 id="backseat">BSG-Backseat Gaming</h2>
+      <p>Wenn du dein RP auf einer öffentlichen Streaming-Plattform überträgst und ein Zuschauer dir Hinweise gibt, wie du handeln sollst, bleibt dein Charakter in seiner Rolle. Das Nutzen solcher Hinweise wird als Backseat Gaming gewertet und ist verboten!</p>
+      
+      <h2 id="afk">§11 AFK-Regelung</h2>
+      <ul>
+        <li>Wer AFK (Away From Keyboard) geht, sollte seinen Charakter in Sicherheit bringen – er sollte nicht regungslos in einer Menschenmenge oder auf einer Straße stehen.</li>
+        <li>Jeder Spieler sollte realistische, situationsangemessene Ausreden finden und diese IC umsetzen.</li>
+        <li>Wird man selbst über eine Servernachricht in den Support gerufen, darf dies nicht im RP erwähnt werden.</li>
+        <li>Man darf nicht länger als 10 Minuten AFK gehen – länger als 10 Minuten führt zum Kick.</li>
+        <li>Unwissenheit schützt nicht vor Strafe!</li>
+      </ul>
+      
+      <h2 id="grauzonen">§12 Grauzonen im Regelwerk</h2>
+      <p>Das gezielte Ausnutzen von Grauzonen im Regelwerk ist untersagt und wird sanktioniert.</p>
+      
+      <p>© NordHaven 2025</p>
+      <div class="back-to-top">
+        <a href="#top">Zurück nach oben</a>
+      </div>
+    </section>
+  </main>
+  
+  <footer class="footer">
+    <div class="footer-section">
+      <h3>Kontakt</h3>
+      <a href="https://discord.gg/nordhaven">Discord</a>
+    </div>
+    <div class="footer-section">
+      <h3>Links</h3>
+      <a href="https://gamingelite.eu/impressum">Impressum</a>
+      <a href="https://gamingelite.eu/impressum">Datenschutz</a>
+      <a href="https://gamingelite.eu/impressum">AGB</a>
+    </div>
+    <div class="footer-section">
+      <p>&copy; 2025 NordHaven RP. Alle Rechte vorbehalten.</p>
+    </div>
+  </footer>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuToggle = document.querySelector('.menu-toggle');
+      const nav = document.querySelector('.nav');
+      menuToggle.addEventListener('click', function() {
+        nav.classList.toggle('active');
+      });
+    });
+  </script>
 </body>
 </html>
