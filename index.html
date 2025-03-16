@@ -11,101 +11,163 @@
   <link rel="apple-touch-icon" sizes="180x180" href="icon/apple-touch-icon.png" />
   <link rel="manifest" href="icon/site.webmanifest" />
   <style>
+    /* Basis-Styles */
     body {
       font-family: 'Arial', sans-serif;
       background: url('img/Designer.jpeg') no-repeat center center fixed;
       background-size: cover;
       color: white;
       margin: 0;
-      padding: 0;
+  padding: 0;
+  overflow-x: hidden;
       text-align: center;
       animation: fadeIn 2s ease-in;
       overflow: auto;
       scrollbar-width: none;       /* Firefox */
-      -ms-overflow-style: none;    /* IE und Edge */
+      -ms-overflow-style: none;    /* IE/Edge */
     }
-    body::-webkit-scrollbar {       /* Chrome, Safari, Opera */
+    body::-webkit-scrollbar {
       display: none;
     }
     @keyframes fadeIn {
       from { opacity: 0; }
       to { opacity: 1; }
     }
-    /* Modernisierter, responsiver Header */
-    .header {
+    
+    header.header {
+      /* Header nicht mehr fixieren – position statisch */
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: linear-gradient(45deg, rgba(30,30,30,0.95), rgba(50,50,50,0.95));
       padding: 15px 30px;
-      position: fixed;
-      top: 0;
       width: 100%;
       z-index: 1000;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      background: none;
+      box-shadow: none;
     }
-    /* Logo als anklickbarer Link */
-    .logo {
+    a.logo {
+      font-family: 'Montserrat', sans-serif;
       font-size: 28px;
-      font-weight: bold;
-      color: #ffffff;
+      font-weight: 700;
+      color: #fff;
       text-decoration: none;
       transition: transform 0.3s;
     }
-    .logo:hover {
-      transform: scale(1.05);
-    }
-    /* Hamburger-Menü Button */
+    a.logo:hover { transform: scale(1.05); }
+    
+    /* Neuer, animierter Hamburger-Button */
     .menu-toggle {
       display: none;
       background: transparent;
       border: none;
-      color: white;
-      font-size: 28px;
       cursor: pointer;
+      padding: 10px;
+      position: relative;
+      z-index: 1100;
+      transition: transform 0.3s ease;
     }
-    /* Desktop Navigation – mit extra margin-right */
+    .menu-toggle:hover {
+      transform: scale(1.1);
+    }
+    .menu-toggle:focus {
+      outline: none;
+    }
+    .menu-toggle span {
+      display: block;
+      width: 35px;
+      height: 4px;
+      margin: 6px auto;
+      background-color: #ffffff;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    .menu-toggle.active span:nth-child(1) {
+      transform: translateY(10px) rotate(45deg);
+    }
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .menu-toggle.active span:nth-child(3) {
+      transform: translateY(-10px) rotate(-45deg);
+    }
+    
+    /* Desktop Navigation */
     .nav {
       display: flex;
-      gap: 35px;
-      margin-right: 50px; /* sorgt für mehr Abstand vom rechten Rand */
+      gap: 30px;
+      margin-right: 50px;
     }
     .nav a {
-      color: white;
+      font-size: 16px;
+      text-transform: uppercase;
+      font-weight: 500;
+      letter-spacing: 1px;
+      color: #ffffff;
       text-decoration: none;
-      font-size: 18px;
-      transition: color 0.3s;
+      position: relative;
+      padding: 5px 0;
+      transition: color 0.3s ease, transform 0.3s ease;
     }
-    .nav a:hover {
+    .nav a:hover,
+    .nav a:focus {
       color: #ffc400;
+      transform: translateY(-2px);
     }
-    /* Mobile Styles: Hamburger-Menü & Navigation */
+    .nav a::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: #ffc400;
+      transition: width 0.3s ease, left 0.3s ease;
+    }
+    .nav a:hover::after,
+    .nav a:focus::after {
+      width: 100%;
+      left: 0;
+    }
+    
+    /* Mobile Styles */
     @media (max-width: 768px) {
+      /* Hamburger-Button sichtbar und oben rechts positioniert */
       .menu-toggle {
         display: block;
         position: absolute;
+        top: 5%;
         right: 10%;
-        top: 15px;
       }
+      
+      /* Navigation wird als Overlay oben rechts eingeblendet */
       .nav {
         display: none;
         flex-direction: column;
         position: absolute;
-        top: 60px;
-        left: 0;
-        width: 100%;
-        background: rgba(30,30,30,0.95);
-        padding: 10px 0;
-        margin-right: 0;
+        top: 60px;        /* etwas unterhalb des Headers */
+        right: 20px;      /* Abstand von rechter Bildschirmkante */
+        width: 220px;     /* feste Breite für das Overlay */
+        background: rgba(0, 0, 0, 0.9);
+        padding: 20px;
+        border-radius: 8px;
       }
       .nav.active {
         display: flex;
       }
       .nav a {
-        padding: 10px 20px;
-        border-top: 1px solid rgba(255,255,255,0.2);
+        margin: 5px 0;
+        padding: 8px 15px;
+        border-radius: 4px;
+        transition: background 0.3s ease;
+      }
+      .nav a:hover {
+        background: rgba(255,255,255,0.1);
       }
     }
+    
+    /* Weitere bestehende Styles */
     .welcome {
       margin-top: 120px;
       padding: 50px 0;
@@ -121,6 +183,7 @@
       from { transform: translateY(-50px); opacity: 0; }
       to { transform: translateY(0); opacity: 1; }
     }
+    
     .features {
       display: flex;
       flex-wrap: wrap;
@@ -152,6 +215,7 @@
       color: #e0e0e0;
       font-size: 16px;
     }
+    
     .about {
       background: rgba(20, 20, 20, 0.9);
       padding: 80px;
@@ -169,12 +233,12 @@
       color: #ffc400;
       margin-bottom: 20px;
     }
+    
     .discord-section {
       text-align: center;
       margin: 50px 0;
       background: rgba(20, 20, 20, 0.9);
       padding: 30px;
-      margin-top: 5%;
       border-radius: 20px;
       max-width: 80%;
       margin-left: auto;
@@ -199,7 +263,7 @@
     .discord-section a:hover {
       background: #4752C4;
     }
-    /* Neuer, moderner Footer */
+    
     .footer {
       background: linear-gradient(45deg, rgba(20,20,20,0.95), rgba(10,10,10,0.95));
       padding: 40px 30px;
@@ -239,28 +303,32 @@
 </head>
 <body>
   <header class="header">
-    <!-- Hamburger-Menü Button (nur auf mobilen Geräten sichtbar) -->
-    <button class="menu-toggle" aria-label="Menü umschalten">&#9776;</button>
-    <!-- Logo als anklickbarer Link -->
+    <!-- Hamburger-Menü Button -->
+    <button class="menu-toggle" aria-label="Menü umschalten">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
     <a href="index" class="logo">Nordhaven RP</a>
     <nav class="nav">
       <a href="index">Home</a>
       <a href="Regelwerk">Regelwerk</a>
       <a href="Team">Team</a>
       <a href="Fraktionen">Fraktionen</a>
+      <a href="folge-uns.html">Folge uns</a>
     </nav>
   </header>
   
   <main>
     <section class="welcome">
-      <h1>Willkommen bei Nordhaven RP</h1>
+      <h1>Willkommen</h1>
     </section>
     
     <section class="features">
       <div class="feature">
         <i class="icon">🚗</i>
         <h2>Realistische Fahrzeuge</h2>
-        <p>Polizei, Zivilfahrzeuge & mehr mit originalgetreuen Designs.</p>
+        <p>Polizei, Zivilfahrzeuge &amp; mehr mit originalgetreuen Designs.</p>
       </div>
       <div class="feature">
         <i class="icon">🏙️</i>
@@ -279,7 +347,7 @@
       </div>
       <div class="feature">
         <i class="icon">🤝</i>
-        <h2>Seriöses RP & faire Community</h2>
+        <h2>Seriöses RP &amp; faire Community</h2>
         <p>Ein durchdachtes Regelwerk und respektvoller Umgang.</p>
       </div>
     </section>
@@ -305,22 +373,23 @@
     </div>
     <div class="footer-section">
       <h3>Links</h3>
-      <a href="https://gamingelite.eu/impressum">Impressum</a>
-      <a href="https://gamingelite.eu/impressum">Datenschutz</a>
-      <a href="https://gamingelite.eu/impressum">AGB</a>
+      <a href="impressum">Impressum</a>
+      <a href="datenschutz">Datenschutz</a>
+      <a href="AGB">AGB</a>
     </div>
     <div class="footer-section">
       <p>&copy; 2025 Nordhaven RP. Alle Rechte vorbehalten.</p>
     </div>
   </footer>
   
-  <!-- JavaScript für das mobile Klappmenü -->
+  <!-- JavaScript: Menü-Umschaltung inklusive Animation des Hamburger-Buttons -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const menuToggle = document.querySelector('.menu-toggle');
       const nav = document.querySelector('.nav');
       menuToggle.addEventListener('click', function() {
         nav.classList.toggle('active');
+        menuToggle.classList.toggle('active');
       });
     });
   </script>

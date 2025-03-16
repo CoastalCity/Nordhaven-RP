@@ -1,26 +1,24 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nordhaven RP - Fraktionen</title>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Datenschutz – Nordhaven RP</title>
+  
   <!-- Google Fonts Einbindung -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
   <link 
     href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@600;700&display=swap" 
-    rel="stylesheet"
-  />
-
-  <link rel="icon" type="image/png" href="icon/favicon-96x96.png" sizes="96x96" />
-  <link rel="icon" type="image/svg+xml" href="icon/favicon.svg" />
-  <link rel="shortcut icon" href="icon/favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="icon/apple-touch-icon.png" />
-  <link rel="manifest" href="icon/site.webmanifest" />
-
+    rel="stylesheet">
+  
+  <link rel="icon" type="image/png" href="icon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/svg+xml" href="icon/favicon.svg">
+  <link rel="shortcut icon" href="icon/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="icon/apple-touch-icon.png">
+  <link rel="manifest" href="icon/site.webmanifest">
+  
   <style>
     /* === Globale Styles === */
-    /* Montserrat für Überschriften, Lato für Fließtext */
     body {
       font-family: 'Lato', sans-serif;
       background: url('img/Designer.jpeg') no-repeat center center fixed;
@@ -30,23 +28,36 @@
       padding: 0;
       text-align: center;
       animation: fadeIn 2s ease-in;
-      overflow: auto;
-      scrollbar-width: none;       /* Firefox */
-      -ms-overflow-style: none;    /* IE & Edge */
-      scroll-behavior: smooth;
+      overflow-x: hidden;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
       line-height: 1.6;
+      position: relative;
+      z-index: 0;
+    }
+    body::before {
+      content: "";
+      position: fixed;  /* Overlay scrollt mit */
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6); /* Halbtransparentes Overlay */
+      z-index: -1;      /* Overlay liegt hinter dem Inhalt */
+    }
+    body::-webkit-scrollbar {
+      width: 0px;
+      background: transparent;
     }
     @keyframes fadeIn {
       from { opacity: 0; }
       to { opacity: 1; }
     }
-    /* Entfernt Scrollbalken im Webkit (Chrome, Safari) */
-    body::-webkit-scrollbar {
-      width: 0px;
-      background: transparent;
+    h1, h2, h3, p, a {
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
     }
-
-    /* === Header & Navigation === */
+    
+    /* === Header & Navigation (optional) === */
     header.header {
       position: relative;
       display: flex;
@@ -67,11 +78,6 @@
       transition: transform 0.3s;
     }
     a.logo:hover { transform: scale(1.05); }
-
-    .wichtig{
-      color: rgb(255, 79, 79)
-    }
-    /* Hamburger-Button */
     .menu-toggle {
       display: none;
       background: transparent;
@@ -101,8 +107,6 @@
     .menu-toggle.active span:nth-child(3) {
       transform: translateY(-10px) rotate(-45deg);
     }
-
-    /* Desktop-Navigation */
     nav.nav {
       display: flex;
       gap: 30px;
@@ -116,7 +120,6 @@
       letter-spacing: 1px;
       color: #fff;
       text-decoration: none;
-      position: relative;
       padding: 5px 0;
       transition: color 0.3s, transform 0.3s;
     }
@@ -127,23 +130,23 @@
     }
     nav.nav a::after {
       content: "";
-      position: absolute;
-      left: 50%;
-      bottom: 0;
+      display: block;
       width: 0;
       height: 2px;
       background: #ffc400;
-      transition: width 0.3s, left 0.3s;
+      transition: width 0.3s;
     }
     nav.nav a:hover::after,
     nav.nav a:focus::after {
       width: 100%;
-      left: 0;
     }
-
-    /* === Mobile Styles === */
     @media (max-width: 768px) {
-      .menu-toggle { display: block; position: absolute; top: 5%; right: 10%; }
+      .menu-toggle { 
+        display: block;
+        position: absolute;
+        top: 5%;
+        right: 10%;
+      }
       nav.nav {
         display: none;
         flex-direction: column;
@@ -151,7 +154,7 @@
         top: 60px;
         right: 20px;
         width: 220px;
-        background: rgba(0, 0, 0, 0.9);
+        background: rgba(0,0,0,0.9);
         padding: 20px;
         border-radius: 8px;
       }
@@ -160,68 +163,47 @@
         margin: 5px 0;
         padding: 8px 15px;
         border-radius: 4px;
-        transition: background 0.3s;
       }
-      nav.nav a:hover { background: rgba(255, 255, 255, 0.1); }
+      nav.nav a:hover { background: rgba(255,255,255,0.1); }
     }
-
-    /* === Fraktionen Section === */
-    section.fraktionen {
-      padding: 20px 40px;
-      text-align: center;
+    
+    /* === Hauptbereich Datenschutz === */
+    main {
       max-width: 1200px;
-      margin: 20px auto;
-      background: linear-gradient(135deg, rgba(30,30,30,0.85), rgba(10,10,10,0.85));
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 15px;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.6);
+      margin: 100px auto 0;
+      padding: 20px;
+      text-align: left;
     }
-    section.fraktionen h1 {
+    h1 {
       font-family: 'Montserrat', sans-serif;
-      color: #ffc400;
-      margin-bottom: 30px;
       font-size: 3em;
+      color: #ffc400;
+      text-align: center;
+      margin-bottom: 20px;
       letter-spacing: 1px;
     }
-    .faction-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-    }
-    .faction-card {
-      background: rgba(0,0,0,0.5);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 10px;
+    section.datenschutz {
+      background: rgba(0,0,0,0.3);
       padding: 20px;
-      width: calc(33.333% - 40px);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-      transition: transform 0.3s;
+      border-radius: 10px;
     }
-    .faction-card:hover {
-      transform: scale(1.05);
-    }
-    .faction-card h2 {
-      font-family: 'Montserrat', sans-serif;
+    section.datenschutz h2 {
       color: #ffc400;
-      margin-bottom: 15px;
-      font-size: 1.8em;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      margin-top: 20px;
+      margin-bottom: 10px;
     }
-    .faction-card p {
+    section.datenschutz p, section.datenschutz ul {
       font-size: 16px;
+      margin: 5px 0;
       line-height: 1.5;
     }
-    @media (max-width: 768px) {
-      .faction-card {
-        width: calc(50% - 40px);
-      }
+    section.datenschutz ul {
+      list-style-type: disc;
+      margin-left: 20px;
     }
-    @media (max-width: 480px) {
-      .faction-card {
-        width: 100%;
-      }
-    }
-
+    
     /* === Footer === */
     footer.footer {
       background: linear-gradient(45deg, rgba(20,20,20,0.95), rgba(10,10,10,0.95));
@@ -249,11 +231,13 @@
     .footer-section a {
       color: #fff;
       text-decoration: none;
-      display: block;
       margin-bottom: 8px;
+      display: block;
       transition: color 0.3s;
     }
-    .footer-section a:hover { color: #ffc400; }
+    .footer-section a:hover {
+      color: #ffc400;
+    }
     .footer-section p {
       font-size: 14px;
       margin: 0;
@@ -262,10 +246,7 @@
   </style>
 </head>
 <body>
-  <!-- Anker für Back-to-Top -->
-  <a id="top"></a>
-
-  <!-- Header & Navigation -->
+  <!-- Header (optional) -->
   <header class="header">
     <button class="menu-toggle" aria-label="Menü umschalten">
       <span></span>
@@ -278,42 +259,64 @@
       <a href="Regelwerk">Regelwerk</a>
       <a href="Team">Team</a>
       <a href="Fraktionen">Fraktionen</a>
-      <a href="folge-uns.html">Folge uns</a>
+      <a href="folge-uns">Folge uns</a>
     </nav>
   </header>
-
-  <!-- Fraktionen Section -->
-  <section class="fraktionen">
-    <h1>Unsere Fraktionen</h1>
-    <div class="faction-container">
-      <div class="faction-card">
-        <h2>Polizei</h2>
-        <p>Unsere Polizei sorgt für Sicherheit und Ordnung in Nordhaven RP.</p>
-      </div>
-      <div class="faction-card">
-        <h2>Feuerwehr</h2>
-        <p>Die Feuerwehr ist im Notfall zur Stelle, um Brände zu bekämpfen und Leben zu retten.</p>
-      </div>
-      <div class="faction-card">
-        <h2>Krankenhaus</h2>
-        <p>Im Krankenhaus kümmern sich unsere Mitarbeiter um verletzte und kranke Bürger.</p>
-      </div>
-      <div class="faction-card">
-        <h2>Mechaniker</h2>
-        <p>Unsere Mechaniker halten Fahrzeuge in Schuss und stehen bei Pannen bereit.</p>
-      </div>
-      <div class="faction-card">
-        <h2>Zoll</h2>
-        <p>Der Zoll überwacht den Warenverkehr und sorgt für die Einhaltung der Regeln.</p>
-      </div>
-    </div>
-  </section>
-
+  
+  <!-- Hauptinhalt Datenschutz -->
+  <main>
+    <h1>Datenschutzerklärung</h1>
+    <section class="datenschutz">
+      <h2>Allgemeine Hinweise</h2>
+      <p>
+        Wir freuen uns, dass Sie unsere Webseite besuchen und bedanken uns für Ihr Interesse an unserem Unternehmen. Der Schutz Ihrer persönlichen Daten ist uns ein besonderes Anliegen. Nachfolgend informieren wir Sie über den Umgang mit Ihren personenbezogenen Daten.
+      </p>
+      
+      <h2>Erfassung und Verarbeitung personenbezogener Daten</h2>
+      <p>
+        Beim Besuch unserer Webseite werden automatisch allgemeine Daten erfasst. Diese umfassen unter anderem:
+      </p>
+      <ul>
+        <li>IP-Adresse</li>
+        <li>Browsertyp und -version</li>
+        <li>Betriebssystem</li>
+        <li>Datum und Uhrzeit des Zugriffs</li>
+        <li>Referrer URL</li>
+      </ul>
+      <p>
+        Diese Daten werden ausschließlich zu statistischen Zwecken erhoben und helfen uns, unser Angebot fortlaufend zu optimieren.
+      </p>
+      
+      <h2>Cookies</h2>
+      <p>
+        Unsere Website verwendet Cookies, um die Nutzerfreundlichkeit zu verbessern. Cookies sind kleine Textdateien, die auf Ihrem Endgerät gespeichert werden. Einige Cookies werden nach Ende der Browser-Sitzung gelöscht, andere bleiben dauerhaft gespeichert, um Sie bei einem erneuten Besuch wiederzuerkennen.
+      </p>
+      
+      <h2>Rechtsgrundlage der Verarbeitung</h2>
+      <p>
+        Die Verarbeitung Ihrer Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Unser berechtigtes Interesse liegt in der Optimierung und Sicherheit unseres Onlineangebots.
+      </p>
+      
+      <h2>Ihre Rechte</h2>
+      <p>
+        Sie haben jederzeit das Recht, Auskunft über die bei uns gespeicherten personenbezogenen Daten zu erhalten. Zudem können Sie die Berichtigung, Löschung oder Einschränkung der Verarbeitung Ihrer Daten verlangen sowie der Verarbeitung widersprechen.
+      </p>
+      
+      <h2>Änderungen der Datenschutzerklärung</h2>
+      <p>
+        Wir behalten uns vor, diese Datenschutzerklärung bei Bedarf anzupassen, um sie stets den aktuellen rechtlichen Anforderungen anzupassen oder Änderungen in unseren Leistungen umzusetzen. Die jeweils aktuelle Fassung ist auf unserer Webseite verfügbar.
+      </p>
+    </section>
+  </main>
+  
   <!-- Footer -->
   <footer class="footer">
     <div class="footer-section">
       <h3>Kontakt</h3>
-      <a href="https://discord.gg/nordhaven">Discord</a>
+      <a href="https://discord.gg/nordhaven" target="_blank">Discord</a>
+      <a href="https://www.tiktok.com/@xreqss_20?_t=ZN-8uVb6yvCjRf&_r=1" target="_blank">TikTok</a>
+      <a href="https://www.twitch.tv/lgd_gamer_" target="_blank">Twitch</a>
+      <a href="https://www.instagram.com/nordhavenrp/" target="_blank">Instagram</a>
     </div>
     <div class="footer-section">
       <h3>Links</h3>
@@ -322,12 +325,12 @@
       <a href="AGB">AGB</a>
     </div>
     <div class="footer-section">
-      <p>&copy; 2025 NordHaven RP. Alle Rechte vorbehalten.</p>
+      <p>&copy; 2025 Nordhaven RP. Alle Rechte vorbehalten.</p>
     </div>
   </footer>
-
+  
   <script>
-    // Toggle Menü (Mobile)
+    // Hamburger-Menü Toggle
     document.addEventListener('DOMContentLoaded', function() {
       const menuToggle = document.querySelector('.menu-toggle');
       const nav = document.querySelector('.nav');

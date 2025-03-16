@@ -1,26 +1,24 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nordhaven RP - Fraktionen</title>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Folge uns – Nordhaven RP</title>
+  
   <!-- Google Fonts Einbindung -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
   <link 
     href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@600;700&display=swap" 
-    rel="stylesheet"
-  />
-
-  <link rel="icon" type="image/png" href="icon/favicon-96x96.png" sizes="96x96" />
-  <link rel="icon" type="image/svg+xml" href="icon/favicon.svg" />
-  <link rel="shortcut icon" href="icon/favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="icon/apple-touch-icon.png" />
-  <link rel="manifest" href="icon/site.webmanifest" />
-
+    rel="stylesheet">
+  
+  <link rel="icon" type="image/png" href="icon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/svg+xml" href="icon/favicon.svg">
+  <link rel="shortcut icon" href="icon/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="icon/apple-touch-icon.png">
+  <link rel="manifest" href="icon/site.webmanifest">
+  
   <style>
     /* === Globale Styles === */
-    /* Montserrat für Überschriften, Lato für Fließtext */
     body {
       font-family: 'Lato', sans-serif;
       background: url('img/Designer.jpeg') no-repeat center center fixed;
@@ -30,25 +28,43 @@
       padding: 0;
       text-align: center;
       animation: fadeIn 2s ease-in;
-      overflow: auto;
-      scrollbar-width: none;       /* Firefox */
-      -ms-overflow-style: none;    /* IE & Edge */
-      scroll-behavior: smooth;
+      overflow-x: hidden;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
       line-height: 1.6;
+      /* Overlay-Vorbereitung */
+      position: relative;
+      z-index: 0;
+    }
+    /* Halbtransparentes Overlay, um Hintergrund abzudunkeln */
+    body::before {
+      content: "";
+      position: fixed;  /* Overlay scrollt mit */
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6); /* Anpassbare Transparenz */
+      z-index: -1;      /* Overlay liegt hinter dem Inhalt */
+    }
+
+    /* Textschatten für bessere Lesbarkeit */
+    h1, h2, h3, p, a {
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+    }
+
+    body::-webkit-scrollbar {
+      width: 0px;
+      background: transparent;
     }
     @keyframes fadeIn {
       from { opacity: 0; }
       to { opacity: 1; }
     }
-    /* Entfernt Scrollbalken im Webkit (Chrome, Safari) */
-    body::-webkit-scrollbar {
-      width: 0px;
-      background: transparent;
-    }
-
+    
     /* === Header & Navigation === */
     header.header {
-      position: relative;
+      position: relative; /* Header scrollt nun mit */
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -67,11 +83,7 @@
       transition: transform 0.3s;
     }
     a.logo:hover { transform: scale(1.05); }
-
-    .wichtig{
-      color: rgb(255, 79, 79)
-    }
-    /* Hamburger-Button */
+    
     .menu-toggle {
       display: none;
       background: transparent;
@@ -101,8 +113,7 @@
     .menu-toggle.active span:nth-child(3) {
       transform: translateY(-10px) rotate(-45deg);
     }
-
-    /* Desktop-Navigation */
+    
     nav.nav {
       display: flex;
       gap: 30px;
@@ -116,7 +127,6 @@
       letter-spacing: 1px;
       color: #fff;
       text-decoration: none;
-      position: relative;
       padding: 5px 0;
       transition: color 0.3s, transform 0.3s;
     }
@@ -127,23 +137,25 @@
     }
     nav.nav a::after {
       content: "";
-      position: absolute;
-      left: 50%;
-      bottom: 0;
+      display: block;
       width: 0;
       height: 2px;
       background: #ffc400;
-      transition: width 0.3s, left 0.3s;
+      transition: width 0.3s;
     }
     nav.nav a:hover::after,
     nav.nav a:focus::after {
       width: 100%;
-      left: 0;
     }
-
-    /* === Mobile Styles === */
+    
+    /* Mobile Styles */
     @media (max-width: 768px) {
-      .menu-toggle { display: block; position: absolute; top: 5%; right: 10%; }
+      .menu-toggle { 
+        display: block;
+        position: absolute;
+        top: 5%;
+        right: 10%;
+      }
       nav.nav {
         display: none;
         flex-direction: column;
@@ -151,7 +163,7 @@
         top: 60px;
         right: 20px;
         width: 220px;
-        background: rgba(0, 0, 0, 0.9);
+        background: rgba(0,0,0,0.9);
         padding: 20px;
         border-radius: 8px;
       }
@@ -160,68 +172,97 @@
         margin: 5px 0;
         padding: 8px 15px;
         border-radius: 4px;
-        transition: background 0.3s;
       }
-      nav.nav a:hover { background: rgba(255, 255, 255, 0.1); }
+      nav.nav a:hover { background: rgba(255,255,255,0.1); }
     }
-
-    /* === Fraktionen Section === */
-    section.fraktionen {
-      padding: 20px 40px;
-      text-align: center;
+    
+    /* === Hauptinhalt: Folge uns === */
+    section.follow {
+      padding: 40px 20px;
       max-width: 1200px;
-      margin: 20px auto;
-      background: linear-gradient(135deg, rgba(30,30,30,0.85), rgba(10,10,10,0.85));
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 15px;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.6);
+      margin: 100px auto 0;
+      text-align: left;
     }
-    section.fraktionen h1 {
+    section.follow h1 {
       font-family: 'Montserrat', sans-serif;
-      color: #ffc400;
-      margin-bottom: 30px;
       font-size: 3em;
+      color: #ffc400;
+      text-align: center;
+      margin-bottom: 20px;
       letter-spacing: 1px;
     }
-    .faction-container {
+    section.follow p {
+      font-size: 18px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    
+    /* Social Media Links */
+    .social-links {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .social-links a {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16px;
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 1px;
+      color: #fff;
+      text-decoration: none;
+      margin: 0 10px;
+      transition: color 0.3s;
+    }
+    .social-links a:hover,
+    .social-links a:focus {
+      color: #ffc400;
+    }
+    
+    /* Video-Sektion */
+    .videos {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
       gap: 20px;
+      justify-content: center;
+      margin-bottom: 40px;
     }
-    .faction-card {
-      background: rgba(0,0,0,0.5);
-      border: 1px solid rgba(255,255,255,0.2);
+    .video {
+      flex: 1 1 300px;
+      max-width: 560px;
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 Verhältnis */
+      height: 0;
+      overflow: hidden;
+      border: 2px solid #ffc400;
       border-radius: 10px;
-      padding: 20px;
-      width: calc(33.333% - 40px);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+    .video iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    
+    /* Bildergalerie */
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+    }
+    .gallery img {
+      width: 100%;
+      max-width: 300px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
       transition: transform 0.3s;
     }
-    .faction-card:hover {
+    .gallery img:hover {
       transform: scale(1.05);
     }
-    .faction-card h2 {
-      font-family: 'Montserrat', sans-serif;
-      color: #ffc400;
-      margin-bottom: 15px;
-      font-size: 1.8em;
-    }
-    .faction-card p {
-      font-size: 16px;
-      line-height: 1.5;
-    }
-    @media (max-width: 768px) {
-      .faction-card {
-        width: calc(50% - 40px);
-      }
-    }
-    @media (max-width: 480px) {
-      .faction-card {
-        width: 100%;
-      }
-    }
-
+    
     /* === Footer === */
     footer.footer {
       background: linear-gradient(45deg, rgba(20,20,20,0.95), rgba(10,10,10,0.95));
@@ -249,11 +290,13 @@
     .footer-section a {
       color: #fff;
       text-decoration: none;
-      display: block;
       margin-bottom: 8px;
+      display: block;
       transition: color 0.3s;
     }
-    .footer-section a:hover { color: #ffc400; }
+    .footer-section a:hover {
+      color: #ffc400;
+    }
     .footer-section p {
       font-size: 14px;
       margin: 0;
@@ -262,10 +305,7 @@
   </style>
 </head>
 <body>
-  <!-- Anker für Back-to-Top -->
-  <a id="top"></a>
-
-  <!-- Header & Navigation -->
+  <!-- Header -->
   <header class="header">
     <button class="menu-toggle" aria-label="Menü umschalten">
       <span></span>
@@ -281,34 +321,36 @@
       <a href="folge-uns.html">Folge uns</a>
     </nav>
   </header>
-
-  <!-- Fraktionen Section -->
-  <section class="fraktionen">
-    <h1>Unsere Fraktionen</h1>
-    <div class="faction-container">
-      <div class="faction-card">
-        <h2>Polizei</h2>
-        <p>Unsere Polizei sorgt für Sicherheit und Ordnung in Nordhaven RP.</p>
+  
+  <!-- Main Content -->
+  <main>
+    <section class="follow">
+      <h1>Folge uns</h1>
+      <p>Bleib immer auf dem neuesten Stand – folge uns auf unseren Social-Media-Kanälen und sieh dir exklusive Videos und Bilder an!</p>
+      
+      <!-- Social Media Links -->
+      <div class="social-links">
+        <a href="https://discord.gg/nordhaven" target="_blank">Discord</a>
+        <a href="https://www.tiktok.com/@xreqss_20?_t=ZN-8uVb6yvCjRf&_r=1" target="_blank">TikTok</a>
+        <a href="https://www.twitch.tv/lgd_gamer_" target="_blank">Twitch</a>
+        <a href="https://www.instagram.com/nordhavenrp/" target="_blank">Instagram</a>
       </div>
-      <div class="faction-card">
-        <h2>Feuerwehr</h2>
-        <p>Die Feuerwehr ist im Notfall zur Stelle, um Brände zu bekämpfen und Leben zu retten.</p>
+  
+      
+      <!-- Bildergalerie Sektion -->
+      <h2 style="text-align:center; color:#ffc400; font-family:'Montserrat', sans-serif;">Bilder</h2>
+      <div class="gallery">
+        <!-- Ersetze die Bildquellen durch deine Serverbilder -->
+        <img src="img/Bild1.png" alt="Server Ansicht 1">
+        <img src="img/Bild2.png" alt="Server Ansicht 2">
+        <img src="img/Bild3.png" alt="Server Ansicht 3">
+        <img src="img/Bild4.png" alt="Server Ansicht 4">
+        <img src="img/Bild5.png" alt="Server Ansicht 3">
+        <img src="img/Bild6.png" alt="Server Ansicht 4">
       </div>
-      <div class="faction-card">
-        <h2>Krankenhaus</h2>
-        <p>Im Krankenhaus kümmern sich unsere Mitarbeiter um verletzte und kranke Bürger.</p>
-      </div>
-      <div class="faction-card">
-        <h2>Mechaniker</h2>
-        <p>Unsere Mechaniker halten Fahrzeuge in Schuss und stehen bei Pannen bereit.</p>
-      </div>
-      <div class="faction-card">
-        <h2>Zoll</h2>
-        <p>Der Zoll überwacht den Warenverkehr und sorgt für die Einhaltung der Regeln.</p>
-      </div>
-    </div>
-  </section>
-
+    </section>
+  </main>
+  
   <!-- Footer -->
   <footer class="footer">
     <div class="footer-section">
@@ -325,9 +367,9 @@
       <p>&copy; 2025 NordHaven RP. Alle Rechte vorbehalten.</p>
     </div>
   </footer>
-
+  
   <script>
-    // Toggle Menü (Mobile)
+    // Hamburger-Menü Toggle
     document.addEventListener('DOMContentLoaded', function() {
       const menuToggle = document.querySelector('.menu-toggle');
       const nav = document.querySelector('.nav');
