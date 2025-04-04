@@ -1,99 +1,81 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nordhaven RP - Regelwerk</title>
-
-  <!-- Google Fonts Einbindung -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" />
-  <link 
-    href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@600;700&display=swap" 
-    rel="stylesheet"
-  />
-
-  <link rel="icon" type="image/png" href="icon/favicon-96x96.png" sizes="96x96" />
-  <link rel="icon" type="image/svg+xml" href="icon/favicon.svg" />
-  <link rel="shortcut icon" href="icon/favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="icon/apple-touch-icon.png" />
-  <link rel="manifest" href="icon/site.webmanifest" />
-
+  <link rel="icon" type="image/png" href="icon/favicon-96x96.png" sizes="96x96">
+  <link rel="apple-touch-icon" sizes="180x180" href="icon/apple-touch-icon.png">
+  <link rel="manifest" href="icon/site.webmanifest">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
   <style>
-    /* === Globale Styles === */
-    /* Montserrat für Überschriften, Lato für Fließtext */
+    :root {
+      --primary-color: #ffc400;
+      --secondary-color: #28a745;
+      --accent-color: #218838;
+      --background-overlay: rgba(20,20,20,0.85);
+      --header-overlay: rgba(0,0,0,0.6);
+      --text-color: #fff;
+      --font-family: 'Poppins', sans-serif;
+    }
+    * { box-sizing: border-box; }
     body {
-      font-family: 'Lato', sans-serif;
+      font-family: var(--font-family);
       background: url('img/Designer.jpeg') no-repeat center center fixed;
       background-size: cover;
-      color: #ffffff;
+      color: var(--text-color);
       margin: 0;
       padding: 0;
-      text-align: center;
+      overflow-x: hidden;
       animation: fadeIn 2s ease-in;
-      overflow: auto;
-      scrollbar-width: none;       /* Firefox */
-      -ms-overflow-style: none;    /* IE & Edge */
       scroll-behavior: smooth;
-      line-height: 1.6;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    /* Entfernt Scrollbalken im Webkit (Chrome, Safari) */
-    body::-webkit-scrollbar {
-      width: 0px;
-      background: transparent;
     }
 
-    /* === Header & Navigation === */
+    /* Hide scrollbar in Webkit */
+    body::-webkit-scrollbar { display: none; }
+    
+    /* Header & Navigation */
     header.header {
-      /* Header nicht mehr fixieren – position statisch */
-      position: relative;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 15px 30px;
+      z-index: 1000;
+      background: var(--header-overlay);
+      backdrop-filter: blur(10px);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 15px 30px;
-      width: 100%;
-      z-index: 1000;
-      background: none;
-      box-shadow: none;
     }
     a.logo {
       font-family: 'Montserrat', sans-serif;
-      font-size: 28px;
+      font-size: 32px;
       font-weight: 700;
-      color: #fff;
+      color: var(--text-color);
       text-decoration: none;
       transition: transform 0.3s;
     }
     a.logo:hover { transform: scale(1.05); }
-
-    .wichtig{
-      color: rgb(255, 79, 79)
-    }
-    /* Hamburger-Button */
     .menu-toggle {
       display: none;
       background: transparent;
       border: none;
       cursor: pointer;
       padding: 10px;
-      position: relative;
       z-index: 1100;
       transition: transform 0.3s ease;
     }
     .menu-toggle:hover { transform: scale(1.1); }
-    .menu-toggle:focus { outline: none; }
     .menu-toggle span {
       display: block;
       width: 35px;
       height: 4px;
       margin: 6px auto;
-      background-color: #fff;
+      background-color: var(--text-color);
       border-radius: 2px;
       transition: all 0.3s ease;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     }
     .menu-toggle.active span:nth-child(1) {
       transform: translateY(10px) rotate(45deg);
@@ -102,8 +84,6 @@
     .menu-toggle.active span:nth-child(3) {
       transform: translateY(-10px) rotate(-45deg);
     }
-
-    /* Desktop-Navigation */
     nav.nav {
       display: flex;
       gap: 30px;
@@ -115,7 +95,7 @@
       text-transform: uppercase;
       font-weight: 600;
       letter-spacing: 1px;
-      color: #fff;
+      color: var(--text-color);
       text-decoration: none;
       position: relative;
       padding: 5px 0;
@@ -123,7 +103,7 @@
     }
     nav.nav a:hover,
     nav.nav a:focus {
-      color: #ffc400;
+      color: var(--primary-color);
       transform: translateY(-2px);
     }
     nav.nav a::after {
@@ -133,7 +113,7 @@
       bottom: 0;
       width: 0;
       height: 2px;
-      background: #ffc400;
+      background: var(--primary-color);
       transition: width 0.3s, left 0.3s;
     }
     nav.nav a:hover::after,
@@ -141,18 +121,21 @@
       width: 100%;
       left: 0;
     }
-
-    /* === Mobile Styles === */
     @media (max-width: 768px) {
-      .menu-toggle { display: block; position: absolute; top: 5%; right: 10%; }
+      .menu-toggle {
+        display: block;
+        position: absolute;
+        top: 15px;
+        right: 20px;
+      }
       nav.nav {
         display: none;
         flex-direction: column;
-        position: absolute;
-        top: 60px;
+        position: fixed;
+        top: 70px;
         right: 20px;
         width: 220px;
-        background: rgba(0, 0, 0, 0.9);
+        background: rgba(0,0,0,0.9);
         padding: 20px;
         border-radius: 8px;
       }
@@ -163,12 +146,15 @@
         border-radius: 4px;
         transition: background 0.3s;
       }
-      nav.nav a:hover { background: rgba(255, 255, 255, 0.1); }
+      nav.nav a:hover { background: rgba(255,255,255,0.1); }
     }
-
-    /* === Inhaltsverzeichnis (TOC) === */
+    main {
+      padding-top: 100px; /* Abstand zum fixierten Header */
+    }
+    
+    /* Inhaltsverzeichnis (TOC) */
     section.toc {
-      background: rgba(0, 0, 0, 0.5);
+      background: rgba(0,0,0,0.5);
       padding: 20px 40px;
       margin: 20px auto;
       max-width: 1200px;
@@ -178,7 +164,7 @@
     }
     section.toc h2 {
       font-family: 'Montserrat', sans-serif;
-      color: #ffc400;
+      color: var(--primary-color);
       font-size: 1.8em;
       margin-bottom: 15px;
     }
@@ -187,19 +173,15 @@
       padding: 0;
       margin: 0;
     }
-    section.toc li {
-      margin-bottom: 10px;
-    }
+    section.toc li { margin-bottom: 10px; }
     section.toc a {
-      color: #fff;
+      color: var(--text-color);
       text-decoration: none;
       transition: color 0.3s;
     }
-    section.toc a:hover {
-      color: #ffc400;
-    }
-
-    /* === Hauptinhalt: Regelwerk === */
+    section.toc a:hover { color: var(--primary-color); }
+    
+    /* Regelwerk Inhalt */
     section.regelwerk {
       padding: 20px 40px;
       text-align: left;
@@ -213,50 +195,43 @@
     section.regelwerk h1 {
       font-family: 'Montserrat', sans-serif;
       text-align: center;
-      color: #ffc400;
+      color: var(--primary-color);
       margin-bottom: 30px;
       font-size: 3em;
       letter-spacing: 1px;
     }
-    /* Überschriften in Orange */
     section.regelwerk h2,
     section.regelwerk h3 {
       font-family: 'Montserrat', sans-serif;
-      color: #ffc400;
+      color: var(--primary-color);
       margin-top: 30px;
       padding-bottom: 5px;
       border-bottom: 1px solid rgba(255,255,255,0.2);
       letter-spacing: 0.5px;
       font-weight: 600;
     }
-
     details {
       margin-bottom: 20px;
       border: 1px solid rgba(255,196,0,0.3);
       border-radius: 8px;
       padding: 10px 15px;
-      background: rgba(0, 0, 0, 0.3);
+      background: rgba(0,0,0,0.3);
       transition: background 0.3s;
       position: relative;
     }
-    details:hover {
-      background: rgba(255,196,0,0.1);
-    }
+    details:hover { background: rgba(255,196,0,0.1); }
     details summary {
       font-family: 'Montserrat', sans-serif;
       font-size: 1.4em;
       font-weight: 600;
-      color: #ffc400;
+      color: var(--primary-color);
       cursor: pointer;
       outline: none;
       display: flex;
       align-items: center;
       user-select: none;
     }
-    details summary::-webkit-details-marker {
-      display: none;
-    }
-    /* Pfeil-Icon vor dem summary-Text */
+    details summary::-webkit-details-marker { display: none; }
     details summary::before {
       content: "▶";
       margin-right: 10px;
@@ -275,25 +250,23 @@
       font-weight: 400;
     }
     details ul { padding-left: 20px; }
-
-    /* Back-to-Top Link */
     .back-to-top {
       text-align: right;
       margin-top: 20px;
     }
     .back-to-top a {
-      color: #ffc400;
+      color: var(--primary-color);
       text-decoration: none;
       font-size: 14px;
       transition: color 0.3s;
     }
-    .back-to-top a:hover { color: #fff; }
-
-    /* === Footer === */
+    .back-to-top a:hover { color: var(--text-color); }
+    
+    /* Footer */
     footer.footer {
       background: linear-gradient(45deg, rgba(20,20,20,0.95), rgba(10,10,10,0.95));
       padding: 40px 30px;
-      border-top: 3px solid #ffc400;
+      border-top: 3px solid var(--primary-color);
       display: flex;
       flex-wrap: wrap;
       justify-content: space-around;
@@ -309,18 +282,18 @@
     .footer-section h3 {
       font-family: 'Montserrat', sans-serif;
       font-size: 20px;
-      color: #ffc400;
+      color: var(--primary-color);
       margin-bottom: 15px;
       font-weight: 600;
     }
     .footer-section a {
-      color: #fff;
+      color: var(--text-color);
       text-decoration: none;
       display: block;
       margin-bottom: 8px;
       transition: color 0.3s;
     }
-    .footer-section a:hover { color: #ffc400; }
+    .footer-section a:hover { color: var(--primary-color); }
     .footer-section p {
       font-size: 14px;
       margin: 0;
@@ -329,10 +302,7 @@
   </style>
 </head>
 <body>
-  <!-- Anker für Back-to-Top -->
   <a id="top"></a>
-
-  <!-- Header & Navigation -->
   <header class="header">
     <button class="menu-toggle" aria-label="Menü umschalten">
       <span></span>
@@ -348,9 +318,7 @@
       <a href="folge-uns.html">Folge uns</a>
     </nav>
   </header>
-
   <main>
-    <!-- Inhaltsverzeichnis -->
     <section class="toc">
       <h2>Inhaltsverzeichnis</h2>
       <ul>
@@ -375,18 +343,13 @@
         <li><a href="#grauzonen">§12 Grauzonen im Regelwerk</a></li>
       </ul>
     </section>
-
-    <!-- Regelwerk Inhalt -->
     <section class="regelwerk">
       <h1>Regelwerk</h1>
-      <p style="font-weight:600;">
-        NordHaven RP<br>
-      </p>
-      <p class="wichtig">
+      <p style="font-weight:600;">NordHaven RP</p>
+      <p class="wichtig" style="color: rgb(255,79,79);">
         Folgendes Regelwerk ist stets zu beachten! Bei Missachtung steht es dem Serverteam frei, Sanktionen auszusprechen!
         Bei wiederholter Zuwiderhandlung folgt der Ausschluss aus der Community und das Verbot der Nutzung des FiveM Servers!
       </p>
-
       <details>
         <summary id="speicherung"><h2>Speicherung von Persönlichen Daten</h2></summary>
         <p>
@@ -394,7 +357,6 @@
           Es werden keine weiteren Daten erhoben – die IP-Adresse bleibt intern und wird nicht weitergegeben.
         </p>
       </details>
-
       <details>
         <summary id="allgemeine-regeln"><h2>§1 Allgemeine Regeln für jeden Nutzer!</h2></summary>
         <ul>
@@ -414,7 +376,6 @@
           Das Handeln mit Echtgeld ist grundsätzlich verboten. Das Spielen auf dem Server ist ab 16 Jahren erlaubt. Das Team behält sich Kontrollrechte vor.
         </p>
       </details>
-
       <details>
         <summary id="allgemeines-wissen"><h2>§1.1 Allgemeines Wissen</h2></summary>
         <p><strong>In Character (IC):</strong> Nutze nur Informationen, die dein Charakter IC erfahren hat. Discord-Infos zählen nicht.</p>
@@ -430,7 +391,6 @@
           <br>– Nach einer schweren Verletzung so tun, als sei nichts passiert.
         </p>
       </details>
-
       <details>
         <summary id="offroading"><h2>Offroading</h2></summary>
         <p>Folgende Fahrzeuge dürfen Offroad fahren:</p>
@@ -441,21 +401,18 @@
           <li>Motorräder, die speziell für Offroad entwickelt wurden (z. B. Sanchez)</li>
         </ul>
       </details>
-
       <details>
         <summary id="power-rp"><h2>Power-RP</h2></summary>
         <p>
           Das Erfinden von Personen, Gütern oder Gegenständen zur Vorteilsverschaffung ist untersagt. Ebenso ist es verboten, in einer RP-Situation dem Gegenüber keinen Ausweg zu bieten (z. B.: "Spring von der Brücke oder ich knalle dich ab!").
         </p>
       </details>
-
       <details>
         <summary id="combat-logging"><h2>Combat Logging</h2></summary>
         <p>
           Das absichtliche Schließen des Spiels während einer RP-Situation – um beispielsweise das Inventar zu retten – ist nicht erlaubt.
         </p>
       </details>
-
       <details>
         <summary id="hacking"><h2>§2 Hacking und Modifizierung der Spieldateien</h2></summary>
         <p>Die Nutzung von externer Software, die Vorteile verschafft, ist verboten. Dazu zählen unter anderem:</p>
@@ -470,7 +427,6 @@
           Erlaubte Modifikationen sind beispielsweise: Grafikmodi wie Redux oder Natural Vision Evolved, Reshade (ohne Vorteile verschaffende Einstellungen) und optische Waffenskins (z. B. ein Messer in „grün“).
         </p>
       </details>
-
       <details>
         <summary id="charakter"><h2>§3 Charaktererstellung &amp; Nickname</h2></summary>
         <p>
@@ -480,7 +436,6 @@
           Das Spielen von psychischen Erkrankungen ist nur dann zulässig, wenn sie zum Charakter passen und keinen Vorteil verschaffen. Lebensbedrohliche Krankheiten sind nicht erwünscht – außer sie sorgen für spannende RP-Interaktionen (z. B. ein Chemielehrer mit Krebs). Bekannte Namen müssen abgeändert werden (z. B. wird aus Walter White Waldfried Black). Ähnliche Namen können zum permanenten Ausschluss führen.
         </p>
       </details>
-
       <details>
         <summary id="maskierung"><h2>§4 Maskierung</h2></summary>
         <ul>
@@ -490,7 +445,6 @@
           <li>"Vollmaskierung" bedeutet, dass mindestens Mund und Nase verdeckt sind – ein Bart zählt nicht als Maske.</li>
         </ul>
       </details>
-
       <details>
         <summary id="new-life"><h2>§5 New-Life-Regel</h2></summary>
         <p>
@@ -500,21 +454,18 @@
           Eine erneute Teilnahme an derselben RP-Situation ist nicht möglich, und der betroffene Ort darf 30 Minuten lang nicht betreten werden. Beim Aufwachen (z. B. nach dem Ausbluten) hat man keinerlei Erinnerungen an das vorherige IC-Leben.
         </p>
       </details>
-
       <details>
         <summary id="fraktionen"><h2>§6 Fraktionen</h2></summary>
         <p>
           <strong>Funktionssperre:</strong> Nach Austritt aus einer Fraktion gilt eine Wartezeit von 7 Tagen, bis ein neuer Fraktionsbeitritt möglich ist. Bei häufigem Jobwechsel verlängert sich diese Frist auf 14 Tage.
         </p>
       </details>
-
       <details>
         <summary id="schuss"><h2>§7 Schuss-Ankündigung</h2></summary>
         <p>
           Es gibt keine separate Schuss-Ankündigung. Schüsse dürfen nur aus triftigen Gründen abgegeben werden – dies gilt auch für Fraktionsmitglieder.
         </p>
       </details>
-
       <details>
         <summary id="geiselnahme"><h2>§8 Geiselnahme, Raub &amp; Überfall</h2></summary>
         <p>
@@ -528,7 +479,6 @@
           Es dürfen maximal 5 Geiseln genommen werden, für welche maximal 20.000€ gefordert werden dürfen. Fake-Geiseln sind strengstens verboten und führen zu einem Bann.
         </p>
       </details>
-
       <details>
         <summary id="support"><h2>§9 Support</h2></summary>
         <ul>
@@ -541,7 +491,6 @@
           <li>Sollten ungewöhnlich hohe Geldsummen oder Waffen von vermeintlichen Cheatern verschenkt werden, muss dies gemeldet und bis zur Klärung zurückgehalten werden.</li>
         </ul>
       </details>
-
       <details>
         <summary id="streaming"><h2>§10 Streaming</h2></summary>
         <ul>
@@ -552,21 +501,18 @@
           <li>Streamende genießen keinen besonderen Schutz – Verstöße werden auch über den Stream sanktioniert.</li>
         </ul>
       </details>
-
       <details>
         <summary id="metagaming"><h2>Metagaming</h2></summary>
         <p>
           Die Nutzung von Informationen, die dein IC-Charakter nicht eigenständig erfahren hat (z. B. durch Anschauen eines Streams zur Erlangung von OOC-Informationen), ist verboten. Absprachen OOC sind ebenso untersagt.
         </p>
       </details>
-
       <details>
         <summary id="backseat"><h2>BSG-Backseat Gaming</h2></summary>
         <p>
           Wenn du dein RP auf einer öffentlichen Streaming-Plattform überträgst und Zuschauer dir Hinweise geben, bleibt dein Charakter in seiner Rolle. Die Nutzung solcher Hinweise gilt als Backseat Gaming und ist verboten.
         </p>
       </details>
-
       <details>
         <summary id="afk"><h2>§11 AFK-Regelung</h2></summary>
         <ul>
@@ -577,21 +523,17 @@
           <li>Unwissenheit schützt nicht vor Strafe!</li>
         </ul>
       </details>
-
       <details>
         <summary id="grauzonen"><h2>§12 Grauzonen im Regelwerk</h2></summary>
         <p>
           Das gezielte Ausnutzen von Grauzonen im Regelwerk ist untersagt und wird sanktioniert.
         </p>
       </details>
-
       <div class="back-to-top">
         <a href="#top">Zurück nach oben</a>
       </div>
     </section>
   </main>
-
-  <!-- Footer -->
   <footer class="footer">
     <div class="footer-section">
       <h3>Kontakt</h3>
@@ -607,9 +549,7 @@
       <p>&copy; 2025 NordHaven RP. Alle Rechte vorbehalten.</p>
     </div>
   </footer>
-
   <script>
-    // Toggle Menü (Mobile)
     document.addEventListener('DOMContentLoaded', function() {
       const menuToggle = document.querySelector('.menu-toggle');
       const nav = document.querySelector('.nav');

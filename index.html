@@ -4,84 +4,78 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nordhaven RP</title>
+  <link rel="icon" type="image/png" href="icon/favicon-96x96.png" sizes="96x96">
   <link rel="stylesheet" href="styles.css">
-  <link rel="icon" type="image/png" href="icon/favicon-96x96.png" sizes="96x96" />
-  <link rel="icon" type="image/svg+xml" href="icon/favicon.svg" />
-  <link rel="shortcut icon" href="icon/favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="icon/apple-touch-icon.png" />
-  <link rel="manifest" href="icon/site.webmanifest" />
+  <link rel="apple-touch-icon" sizes="180x180" href="icon/apple-touch-icon.png">
+  <link rel="manifest" href="icon/site.webmanifest">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    /* Basis-Styles */
+    :root {
+      --primary-color: #ffc400;
+      --secondary-color: #28a745;
+      --accent-color: #218838;
+      --background-overlay: rgba(20,20,20,0.85);
+      --header-overlay: rgba(0,0,0,0.6);
+      --text-color: #fff;
+      --font-family: 'Poppins', sans-serif;
+    }
+    * {
+      box-sizing: border-box;
+    }
     body {
-      font-family: 'Arial', sans-serif;
+      font-family: var(--font-family);
       background: url('img/Designer.jpeg') no-repeat center center fixed;
       background-size: cover;
-      color: white;
+      color: var(--text-color);
       margin: 0;
-  padding: 0;
-  overflow-x: hidden;
+      padding: 0;
+      overflow-x: hidden;
       text-align: center;
       animation: fadeIn 2s ease-in;
-      overflow: auto;
-      scrollbar-width: none;       /* Firefox */
-      -ms-overflow-style: none;    /* IE/Edge */
     }
-    body::-webkit-scrollbar {
-      display: none;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    
+
+    /* Header & Navigation */
     header.header {
-      /* Header nicht mehr fixieren – position statisch */
-      position: relative;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 15px 30px;
+      z-index: 1000;
+      background: var(--header-overlay);
+      backdrop-filter: blur(10px);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 15px 30px;
-      width: 100%;
-      z-index: 1000;
-      background: none;
-      box-shadow: none;
     }
     a.logo {
       font-family: 'Montserrat', sans-serif;
-      font-size: 28px;
+      font-size: 32px;
       font-weight: 700;
-      color: #fff;
+      color: var(--text-color);
       text-decoration: none;
       transition: transform 0.3s;
     }
     a.logo:hover { transform: scale(1.05); }
-    
-    /* Neuer, animierter Hamburger-Button */
     .menu-toggle {
       display: none;
       background: transparent;
       border: none;
       cursor: pointer;
       padding: 10px;
-      position: relative;
       z-index: 1100;
       transition: transform 0.3s ease;
     }
-    .menu-toggle:hover {
-      transform: scale(1.1);
-    }
-    .menu-toggle:focus {
-      outline: none;
-    }
+    .menu-toggle:hover { transform: scale(1.1); }
     .menu-toggle span {
       display: block;
       width: 35px;
       height: 4px;
       margin: 6px auto;
-      background-color: #ffffff;
+      background-color: var(--text-color);
       border-radius: 2px;
       transition: all 0.3s ease;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     }
     .menu-toggle.active span:nth-child(1) {
       transform: translateY(10px) rotate(45deg);
@@ -92,19 +86,16 @@
     .menu-toggle.active span:nth-child(3) {
       transform: translateY(-10px) rotate(-45deg);
     }
-    
-    /* Desktop Navigation */
     .nav {
       display: flex;
       gap: 30px;
-      margin-right: 50px;
     }
     .nav a {
       font-size: 16px;
       text-transform: uppercase;
-      font-weight: 500;
+      font-weight: 600;
       letter-spacing: 1px;
-      color: #ffffff;
+      color: var(--text-color);
       text-decoration: none;
       position: relative;
       padding: 5px 0;
@@ -112,17 +103,17 @@
     }
     .nav a:hover,
     .nav a:focus {
-      color: #ffc400;
+      color: var(--primary-color);
       transform: translateY(-2px);
     }
     .nav a::after {
       content: "";
       position: absolute;
       left: 50%;
-      bottom: 0;
+      bottom: -5px;
       width: 0;
       height: 2px;
-      background: #ffc400;
+      background: var(--primary-color);
       transition: width 0.3s ease, left 0.3s ease;
     }
     .nav a:hover::after,
@@ -130,25 +121,20 @@
       width: 100%;
       left: 0;
     }
-    
-    /* Mobile Styles */
     @media (max-width: 768px) {
-      /* Hamburger-Button sichtbar und oben rechts positioniert */
       .menu-toggle {
         display: block;
         position: absolute;
-        top: 5%;
-        right: 10%;
+        top: 15px;
+        right: 20px;
       }
-      
-      /* Navigation wird als Overlay oben rechts eingeblendet */
       .nav {
         display: none;
         flex-direction: column;
-        position: absolute;
-        top: 60px;        /* etwas unterhalb des Headers */
-        right: 20px;      /* Abstand von rechter Bildschirmkante */
-        width: 220px;     /* feste Breite für das Overlay */
+        position: fixed;
+        top: 70px;
+        right: 20px;
+        width: 220px;
         background: rgba(0, 0, 0, 0.9);
         padding: 20px;
         border-radius: 8px;
@@ -160,52 +146,57 @@
         margin: 5px 0;
         padding: 8px 15px;
         border-radius: 4px;
-        transition: background 0.3s ease;
       }
       .nav a:hover {
         background: rgba(255,255,255,0.1);
       }
     }
-    
-    /* Weitere bestehende Styles */
+    main {
+      padding-top: 100px; /* Abstand zum fixierten Header */
+    }
+    /* Sections */
     .welcome {
-      margin-top: 120px;
-      padding: 50px 0;
+      margin: 120px auto 50px;
+      padding: 100px 20px;
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 15px;
+      backdrop-filter: blur(5px);
+      max-width: 90%;
     }
     .welcome h1 {
       font-size: 4.5em;
-      font-weight: bold;
-      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+      font-weight: 700;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
       animation: slideIn 1.5s ease-out;
-      color: #ffc400;
+      color: var(--primary-color);
     }
     @keyframes slideIn {
       from { transform: translateY(-50px); opacity: 0; }
       to { transform: translateY(0); opacity: 1; }
     }
-    
     .features {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 20px;
-      padding: 40px;
+      gap: 30px;
+      padding: 40px 20px;
     }
     .feature {
-      background: rgba(0, 0, 0, 0.85);
+      background: rgba(0, 0, 0, 0.8);
       padding: 25px;
       border-radius: 15px;
       width: 280px;
       text-align: center;
-      box-shadow: 0 6px 12px rgba(255, 255, 255, 0.2);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
       transition: transform 0.3s, background 0.3s;
     }
     .feature:hover {
       transform: scale(1.08);
-      background: rgba(255, 165, 0, 0.9);
+      background: var(--primary-color);
     }
     .feature i {
-      font-size: 45px;
+      font-size: 50px;
+      margin-bottom: 15px;
     }
     .feature h2 {
       font-size: 1.8em;
@@ -215,34 +206,28 @@
       color: #e0e0e0;
       font-size: 16px;
     }
-    
     .about {
-      background: rgba(20, 20, 20, 0.9);
-      padding: 80px;
-      margin-top: 10px;
+      background: var(--background-overlay);
+      padding: 80px 20px;
+      margin: 50px auto;
       font-size: 20px;
       line-height: 1.8;
-      color: #ffffff;
       border-radius: 20px;
       max-width: 80%;
-      margin: 20px auto;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     }
     .about h2 {
       font-size: 2.5em;
-      color: #ffc400;
+      color: var(--primary-color);
       margin-bottom: 20px;
     }
-    
     .discord-section {
-      text-align: center;
-      margin: 50px 0;
-      background: rgba(20, 20, 20, 0.9);
+      background: var(--background-overlay);
       padding: 30px;
+      margin: 50px auto;
       border-radius: 20px;
       max-width: 80%;
-      margin-left: auto;
-      margin-right: auto;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     }
     .discord-section img {
       width: 200px;
@@ -253,7 +238,7 @@
     .discord-section a {
       display: inline-block;
       background: #5865F2;
-      color: white;
+      color: var(--text-color);
       padding: 10px 20px;
       border-radius: 8px;
       font-size: 18px;
@@ -263,11 +248,40 @@
     .discord-section a:hover {
       background: #4752C4;
     }
-    
+    .direct-connect {
+      background: var(--background-overlay);
+      padding: 30px;
+      margin: 50px auto;
+      border-radius: 20px;
+      max-width: 80%;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    }
+    .direct-connect h2 {
+      font-size: 2.5em;
+      color: var(--primary-color);
+      margin-bottom: 20px;
+    }
+    .connect-button {
+      display: inline-block;
+      background: var(--secondary-color);
+      color: var(--text-color);
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 18px;
+      text-decoration: none;
+      transition: background 0.3s, transform 0.3s;
+      cursor: pointer;
+      border: none;
+    }
+    .connect-button:hover {
+      background: var(--accent-color);
+      transform: scale(1.05);
+    }
+    /* Footer */
     .footer {
       background: linear-gradient(45deg, rgba(20,20,20,0.95), rgba(10,10,10,0.95));
       padding: 40px 30px;
-      border-top: 3px solid #ffc400;
+      border-top: 3px solid var(--primary-color);
       display: flex;
       flex-wrap: wrap;
       justify-content: space-around;
@@ -282,22 +296,40 @@
     }
     .footer h3 {
       font-size: 20px;
-      color: #ffc400;
+      color: var(--primary-color);
       margin-bottom: 15px;
     }
     .footer a {
-      color: #ffffff;
+      color: var(--text-color);
       text-decoration: none;
       display: block;
       margin-bottom: 8px;
       transition: color 0.3s;
     }
     .footer a:hover {
-      color: #ffc400;
+      color: var(--primary-color);
     }
     .footer p {
       font-size: 14px;
       margin: 0;
+    }
+    /* Scroll-to-Top Button */
+    #scrollToTop {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: rgba(255,255,255,0.2);
+      border: none;
+      padding: 10px 15px;
+      border-radius: 50%;
+      font-size: 24px;
+      cursor: pointer;
+      display: none;
+      transition: opacity 0.3s;
+      z-index: 1200;
+    }
+    #scrollToTop:hover {
+      opacity: 0.8;
     }
   </style>
 </head>
@@ -318,12 +350,10 @@
       <a href="folge-uns.html">Folge uns</a>
     </nav>
   </header>
-  
   <main>
     <section class="welcome">
       <h1>Willkommen</h1>
     </section>
-    
     <section class="features">
       <div class="feature">
         <i class="icon">🚗</i>
@@ -337,7 +367,7 @@
       </div>
       <div class="feature">
         <i class="icon">💰</i>
-        <h2>Ausgereiftes Wirtschaftssystem</h2>
+        <h2>Ausgereifte Wirtschaft</h2>
         <p>Gründe Unternehmen oder tauche in die Unterwelt ein.</p>
       </div>
       <div class="feature">
@@ -351,21 +381,24 @@
         <p>Ein durchdachtes Regelwerk und respektvoller Umgang.</p>
       </div>
     </section>
-    
     <section class="about">
       <h2>Nordhaven RP</h2>
       <p>Nordhaven RP bietet ein einzigartiges Roleplay-Erlebnis mit einer lebendigen Community, realistischen Spielmechaniken und einer fairen Spielumgebung.</p>
       <p>Ob du als Gesetzeshüter für Ordnung sorgst, dein eigenes Unternehmen aufbaust oder tief in die Unterwelt eintauchst – hier gibt es für jeden die passende Rolle.</p>
       <p>Erlebe spannende Geschichten, interaktive Missionen und ein dynamisches Wirtschaftssystem, das für Langzeitmotivation sorgt.</p>
     </section>
-
     <section class="discord-section">
       <img src="img/DC.jpg" alt="Discord Logo">
       <p>Tritt unserem Discord-Server bei und werde Teil unserer RP-Community!</p>
       <a href="https://discord.gg/nordhaven" target="_blank">Jetzt beitreten</a>
     </section>
+    <section class="direct-connect">
+      <h2>Direktverbindung</h2>
+      <p>Verbinde dich direkt mit unserem Server und starte dein Abenteuer!</p>
+      <button class="connect-button" onclick="connectToServer()">Direkt verbinden</button>
+      <iframe id="fivem-iframe" src="fivem://connect/159.69.190.92:30120" style="display: none;"></iframe>
+    </section>
   </main>
-  
   <footer class="footer">
     <div class="footer-section">
       <h3>Kontakt</h3>
@@ -381,8 +414,7 @@
       <p>&copy; 2025 Nordhaven RP. Alle Rechte vorbehalten.</p>
     </div>
   </footer>
-  
-  <!-- JavaScript: Menü-Umschaltung inklusive Animation des Hamburger-Buttons -->
+  <button id="scrollToTop" aria-label="Nach oben scrollen">⬆️</button>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const menuToggle = document.querySelector('.menu-toggle');
@@ -392,6 +424,16 @@
         menuToggle.classList.toggle('active');
       });
     });
+    const scrollBtn = document.getElementById('scrollToTop');
+    window.addEventListener('scroll', () => {
+      scrollBtn.style.display = window.pageYOffset > 300 ? "block" : "none";
+    });
+    scrollBtn.addEventListener('click', () => {
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    });
+    function connectToServer() {
+      document.getElementById('fivem-iframe').src = "fivem://connect/11.11.11.11:30120";
+    }
   </script>
 </body>
 </html>

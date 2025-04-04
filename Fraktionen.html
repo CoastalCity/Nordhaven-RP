@@ -1,98 +1,77 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nordhaven RP - Fraktionen</title>
-
-  <!-- Google Fonts Einbindung -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" />
-  <link 
-    href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@600;700&display=swap" 
-    rel="stylesheet"
-  />
-
-  <link rel="icon" type="image/png" href="icon/favicon-96x96.png" sizes="96x96" />
-  <link rel="icon" type="image/svg+xml" href="icon/favicon.svg" />
-  <link rel="shortcut icon" href="icon/favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="icon/apple-touch-icon.png" />
-  <link rel="manifest" href="icon/site.webmanifest" />
-
+  <link rel="icon" type="image/png" href="icon/favicon-96x96.png" sizes="96x96">
+  <link rel="apple-touch-icon" sizes="180x180" href="icon/apple-touch-icon.png">
+  <link rel="manifest" href="icon/site.webmanifest">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
   <style>
-    /* === Globale Styles === */
-    /* Montserrat für Überschriften, Lato für Fließtext */
+    :root {
+      --primary-color: #ffc400;
+      --secondary-color: #28a745;
+      --accent-color: #218838;
+      --background-overlay: rgba(20,20,20,0.85);
+      --header-overlay: rgba(0,0,0,0.6);
+      --text-color: #fff;
+      --font-family: 'Poppins', sans-serif;
+    }
+    * { box-sizing: border-box; }
     body {
-      font-family: 'Lato', sans-serif;
+      font-family: var(--font-family);
       background: url('img/Designer.jpeg') no-repeat center center fixed;
       background-size: cover;
-      color: #ffffff;
+      color: var(--text-color);
       margin: 0;
       padding: 0;
-      text-align: center;
+      overflow-x: hidden;
       animation: fadeIn 2s ease-in;
-      overflow: auto;
-      scrollbar-width: none;       /* Firefox */
-      -ms-overflow-style: none;    /* IE & Edge */
       scroll-behavior: smooth;
-      line-height: 1.6;
     }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    /* Entfernt Scrollbalken im Webkit (Chrome, Safari) */
-    body::-webkit-scrollbar {
-      width: 0px;
-      background: transparent;
-    }
-
-    /* === Header & Navigation === */
+    /* Header & Navigation */
     header.header {
-      position: relative;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 15px 30px;
+      z-index: 1000;
+      background: var(--header-overlay);
+      backdrop-filter: blur(10px);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 15px 30px;
-      width: 100%;
-      z-index: 1000;
-      background: none;
-      box-shadow: none;
     }
     a.logo {
       font-family: 'Montserrat', sans-serif;
-      font-size: 28px;
+      font-size: 32px;
       font-weight: 700;
-      color: #fff;
+      color: var(--text-color);
       text-decoration: none;
       transition: transform 0.3s;
     }
     a.logo:hover { transform: scale(1.05); }
-
-    .wichtig{
-      color: rgb(255, 79, 79)
-    }
-    /* Hamburger-Button */
     .menu-toggle {
       display: none;
       background: transparent;
       border: none;
       cursor: pointer;
       padding: 10px;
-      position: relative;
       z-index: 1100;
       transition: transform 0.3s ease;
     }
     .menu-toggle:hover { transform: scale(1.1); }
-    .menu-toggle:focus { outline: none; }
     .menu-toggle span {
       display: block;
       width: 35px;
       height: 4px;
       margin: 6px auto;
-      background-color: #fff;
+      background-color: var(--text-color);
       border-radius: 2px;
       transition: all 0.3s ease;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     }
     .menu-toggle.active span:nth-child(1) {
       transform: translateY(10px) rotate(45deg);
@@ -101,8 +80,6 @@
     .menu-toggle.active span:nth-child(3) {
       transform: translateY(-10px) rotate(-45deg);
     }
-
-    /* Desktop-Navigation */
     nav.nav {
       display: flex;
       gap: 30px;
@@ -110,11 +87,11 @@
     }
     nav.nav a {
       font-family: 'Montserrat', sans-serif;
-      font-size: 15px;
+      font-size: 16px;
       text-transform: uppercase;
       font-weight: 600;
       letter-spacing: 1px;
-      color: #fff;
+      color: var(--text-color);
       text-decoration: none;
       position: relative;
       padding: 5px 0;
@@ -122,7 +99,7 @@
     }
     nav.nav a:hover,
     nav.nav a:focus {
-      color: #ffc400;
+      color: var(--primary-color);
       transform: translateY(-2px);
     }
     nav.nav a::after {
@@ -132,7 +109,7 @@
       bottom: 0;
       width: 0;
       height: 2px;
-      background: #ffc400;
+      background: var(--primary-color);
       transition: width 0.3s, left 0.3s;
     }
     nav.nav a:hover::after,
@@ -140,18 +117,21 @@
       width: 100%;
       left: 0;
     }
-
-    /* === Mobile Styles === */
     @media (max-width: 768px) {
-      .menu-toggle { display: block; position: absolute; top: 5%; right: 10%; }
+      .menu-toggle {
+        display: block;
+        position: absolute;
+        top: 15px;
+        right: 20px;
+      }
       nav.nav {
         display: none;
         flex-direction: column;
-        position: absolute;
-        top: 60px;
+        position: fixed;
+        top: 70px;
         right: 20px;
         width: 220px;
-        background: rgba(0, 0, 0, 0.9);
+        background: rgba(0,0,0,0.9);
         padding: 20px;
         border-radius: 8px;
       }
@@ -162,48 +142,44 @@
         border-radius: 4px;
         transition: background 0.3s;
       }
-      nav.nav a:hover { background: rgba(255, 255, 255, 0.1); }
+      nav.nav a:hover { background: rgba(255,255,255,0.1); }
     }
-
-    /* === Fraktionen Section === */
+    main { padding-top: 100px; }
+    /* Fraktionen Section */
     section.fraktionen {
-      padding: 20px 40px;
-      text-align: center;
+      padding: 40px 20px;
       max-width: 1200px;
-      margin: 20px auto;
+      margin: 120px auto 50px;
       background: linear-gradient(135deg, rgba(30,30,30,0.85), rgba(10,10,10,0.85));
       border: 1px solid rgba(255,255,255,0.1);
       border-radius: 15px;
       box-shadow: 0 8px 16px rgba(0,0,0,0.6);
+      text-align: center;
     }
     section.fraktionen h1 {
       font-family: 'Montserrat', sans-serif;
-      color: #ffc400;
+      color: var(--primary-color);
       margin-bottom: 30px;
       font-size: 3em;
       letter-spacing: 1px;
     }
     .faction-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
     }
     .faction-card {
       background: rgba(0,0,0,0.5);
       border: 1px solid rgba(255,255,255,0.2);
       border-radius: 10px;
       padding: 20px;
-      width: calc(33.333% - 40px);
       box-shadow: 0 4px 8px rgba(0,0,0,0.3);
       transition: transform 0.3s;
     }
-    .faction-card:hover {
-      transform: scale(1.05);
-    }
+    .faction-card:hover { transform: scale(1.05); }
     .faction-card h2 {
       font-family: 'Montserrat', sans-serif;
-      color: #ffc400;
+      color: var(--primary-color);
       margin-bottom: 15px;
       font-size: 1.8em;
     }
@@ -211,22 +187,32 @@
       font-size: 16px;
       line-height: 1.5;
     }
+    /* Discord Button für Fraktionen */
+    .discord-btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 8px 16px;
+      background: #5865F2;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+      font-size: 14px;
+      transition: background 0.3s ease;
+    }
+    .discord-btn:hover {
+      background: #4752C4;
+    }
     @media (max-width: 768px) {
-      .faction-card {
-        width: calc(50% - 40px);
-      }
+      .faction-card { grid-column: span 2; }
     }
     @media (max-width: 480px) {
-      .faction-card {
-        width: 100%;
-      }
+      .faction-card { grid-column: span 1; }
     }
-
-    /* === Footer === */
+    /* Footer */
     footer.footer {
       background: linear-gradient(45deg, rgba(20,20,20,0.95), rgba(10,10,10,0.95));
       padding: 40px 30px;
-      border-top: 3px solid #ffc400;
+      border-top: 3px solid var(--primary-color);
       display: flex;
       flex-wrap: wrap;
       justify-content: space-around;
@@ -242,18 +228,18 @@
     .footer-section h3 {
       font-family: 'Montserrat', sans-serif;
       font-size: 20px;
-      color: #ffc400;
+      color: var(--primary-color);
       margin-bottom: 15px;
       font-weight: 600;
     }
     .footer-section a {
-      color: #fff;
+      color: var(--text-color);
       text-decoration: none;
       display: block;
       margin-bottom: 8px;
       transition: color 0.3s;
     }
-    .footer-section a:hover { color: #ffc400; }
+    .footer-section a:hover { color: var(--primary-color); }
     .footer-section p {
       font-size: 14px;
       margin: 0;
@@ -262,10 +248,7 @@
   </style>
 </head>
 <body>
-  <!-- Anker für Back-to-Top -->
   <a id="top"></a>
-
-  <!-- Header & Navigation -->
   <header class="header">
     <button class="menu-toggle" aria-label="Menü umschalten">
       <span></span>
@@ -281,39 +264,42 @@
       <a href="folge-uns.html">Folge uns</a>
     </nav>
   </header>
-
-  <!-- Fraktionen Section -->
-  <section class="fraktionen">
-    <h1>Unsere Fraktionen</h1>
-    <div class="faction-container">
-      <div class="faction-card">
-        <h2>Polizei</h2>
-        <p>Unsere Polizei sorgt für Sicherheit und Ordnung in Nordhaven RP.</p>
+  <main>
+    <section class="fraktionen">
+      <h1>Unsere Fraktionen</h1>
+      <div class="faction-container">
+        <div class="faction-card">
+          <h2>Polizei</h2>
+          <p>Unsere Polizei sorgt für Sicherheit und Ordnung in Nordhaven RP.</p>
+          <a class="discord-btn" href="https://discord.gg/nordhaven" target="_blank">Discord beitreten</a>
+        </div>
+        <div class="faction-card">
+          <h2>Feuerwehr</h2>
+          <p>Die Feuerwehr ist im Notfall zur Stelle, um Brände zu bekämpfen und Leben zu retten.</p>
+          <a class="discord-btn" href="https://discord.gg/y8uBb8AueP" target="_blank">Discord beitreten</a>
+        </div>
+        <div class="faction-card">
+          <h2>Krankenhaus</h2>
+          <p>Im Krankenhaus kümmern sich unsere Mitarbeiter um verletzte und kranke Bürger.</p>
+          <a class="discord-btn" href="https://discord.gg/P7nvMY3b2z" target="_blank">Discord beitreten</a>
+        </div>
+        <div class="faction-card">
+          <h2>Mechaniker</h2>
+          <p>Unsere Mechaniker halten Fahrzeuge in Schuss und stehen bei Pannen bereit.</p>
+          <a class="discord-btn" href="https://discord.gg/nordhaven" target="_blank">Discord beitreten</a>
+        </div>
+        <div class="faction-card">
+          <h2>Rettungsdienst</h2>
+          <p>Der Rettungsdienst ist rund um die Uhr im Einsatz, um Verletzte schnell zu versorgen und Hilfe zu leisten.</p>
+          <a class="discord-btn" href="https://discord.gg/y8uBb8AueP" target="_blank">Discord beitreten</a>
+        </div>
       </div>
-      <div class="faction-card">
-        <h2>Feuerwehr</h2>
-        <p>Die Feuerwehr ist im Notfall zur Stelle, um Brände zu bekämpfen und Leben zu retten.</p>
-      </div>
-      <div class="faction-card">
-        <h2>Krankenhaus</h2>
-        <p>Im Krankenhaus kümmern sich unsere Mitarbeiter um verletzte und kranke Bürger.</p>
-      </div>
-      <div class="faction-card">
-        <h2>Mechaniker</h2>
-        <p>Unsere Mechaniker halten Fahrzeuge in Schuss und stehen bei Pannen bereit.</p>
-      </div>
-      <div class="faction-card">
-        <h2>Zoll</h2>
-        <p>Der Zoll überwacht den Warenverkehr und sorgt für die Einhaltung der Regeln.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
+    </section>
+  </main>
   <footer class="footer">
     <div class="footer-section">
       <h3>Kontakt</h3>
-      <a href="https://discord.gg/nordhaven">Discord</a>
+      <a href="https://discord.gg/nordhaven" target="_blank">Discord</a>
     </div>
     <div class="footer-section">
       <h3>Links</h3>
@@ -322,12 +308,10 @@
       <a href="AGB">AGB</a>
     </div>
     <div class="footer-section">
-      <p>&copy; 2025 NordHaven RP. Alle Rechte vorbehalten.</p>
+      <p>&copy; 2025 Nordhaven RP. Alle Rechte vorbehalten.</p>
     </div>
   </footer>
-
   <script>
-    // Toggle Menü (Mobile)
     document.addEventListener('DOMContentLoaded', function() {
       const menuToggle = document.querySelector('.menu-toggle');
       const nav = document.querySelector('.nav');

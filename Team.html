@@ -4,90 +4,75 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nordhaven RP - Team</title>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="icon" type="image/png" href="icon/favicon-96x96.png" sizes="96x96" />
-  <link rel="icon" type="image/svg+xml" href="icon/favicon.svg" />
-  <link rel="shortcut icon" href="icon/favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="icon/apple-touch-icon.png" />
-  <link rel="manifest" href="icon/site.webmanifest" />
+  <link rel="icon" type="image/png" href="icon/favicon-96x96.png" sizes="96x96">
+  <link rel="apple-touch-icon" sizes="180x180" href="icon/apple-touch-icon.png">
+  <link rel="manifest" href="icon/site.webmanifest">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
   <style>
-    /* Global Styles */
+    :root {
+      --primary-color: #ffc400;
+      --secondary-color: #28a745;
+      --accent-color: #218838;
+      --background-overlay: rgba(20,20,20,0.85);
+      --header-overlay: rgba(0,0,0,0.6);
+      --text-color: #fff;
+      --font-family: 'Poppins', sans-serif;
+    }
+    * { box-sizing: border-box; }
     body {
-      font-family: 'Arial', sans-serif;
+      font-family: var(--font-family);
       background: url('img/Designer.jpeg') no-repeat center center fixed;
       background-size: cover;
-      color: #fff;
+      color: var(--text-color);
       margin: 0;
       padding: 0;
-      text-align: center;
+      overflow-x: hidden;
       animation: fadeIn 2s ease-in;
-      overflow: auto;
-      scrollbar-width: none;       /* Firefox */
-      -ms-overflow-style: none;    /* IE & Edge */
-      position: relative;
-      z-index: 0;
+      scroll-behavior: smooth;
     }
-    body::before {
-      content: "";
+
+    /* Header & Navigation */
+    header.header {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.6);
-      z-index: -1;
-    }
-    body::-webkit-scrollbar {
-      display: none;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    
-    /* Header & Navigation */
-    header.header {
-      position: relative;
+      padding: 15px 30px;
+      z-index: 1000;
+      background: var(--header-overlay);
+      backdrop-filter: blur(10px);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 15px 30px;
-      width: 100%;
-      z-index: 1000;
-      background: none;
-      box-shadow: none;
     }
     a.logo {
       font-family: 'Montserrat', sans-serif;
-      font-size: 28px;
+      font-size: 32px;
       font-weight: 700;
-      color: #fff;
+      color: var(--text-color);
       text-decoration: none;
       transition: transform 0.3s;
     }
     a.logo:hover { transform: scale(1.05); }
-    
     .menu-toggle {
       display: none;
       background: transparent;
       border: none;
       cursor: pointer;
       padding: 10px;
-      position: relative;
       z-index: 1100;
       transition: transform 0.3s ease;
     }
     .menu-toggle:hover { transform: scale(1.1); }
-    .menu-toggle:focus { outline: none; }
     .menu-toggle span {
       display: block;
       width: 35px;
       height: 4px;
       margin: 6px auto;
-      background-color: #fff;
+      background-color: var(--text-color);
       border-radius: 2px;
       transition: all 0.3s ease;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     }
     .menu-toggle.active span:nth-child(1) {
       transform: translateY(10px) rotate(45deg);
@@ -96,86 +81,104 @@
     .menu-toggle.active span:nth-child(3) {
       transform: translateY(-10px) rotate(-45deg);
     }
-    
-    .nav {
+    nav.nav {
       display: flex;
       gap: 30px;
       margin-right: 50px;
     }
-    .nav a {
+    nav.nav a {
+      font-family: 'Montserrat', sans-serif;
       font-size: 16px;
       text-transform: uppercase;
-      font-weight: 500;
+      font-weight: 600;
       letter-spacing: 1px;
-      color: #fff;
+      color: var(--text-color);
       text-decoration: none;
       position: relative;
       padding: 5px 0;
       transition: color 0.3s ease, transform 0.3s ease;
     }
-    .nav a:hover,
-    .nav a:focus {
-      color: #ffc400;
+    nav.nav a:hover,
+    nav.nav a:focus {
+      color: var(--primary-color);
       transform: translateY(-2px);
     }
-    .nav a::after {
+    nav.nav a::after {
       content: "";
       position: absolute;
       left: 50%;
       bottom: 0;
       width: 0;
       height: 2px;
-      background: #ffc400;
-      transition: width 0.3s ease, left 0.3s ease;
+      background: var(--primary-color);
+      transition: width 0.3s, left 0.3s;
     }
-    .nav a:hover::after,
-    .nav a:focus::after {
+    nav.nav a:hover::after,
+    nav.nav a:focus::after {
       width: 100%;
       left: 0;
     }
-    
     @media (max-width: 768px) {
       .menu-toggle {
         display: block;
         position: absolute;
-        top: 5%;
-        right: 10%;
+        top: 15px;
+        right: 20px;
       }
-      .nav {
+      nav.nav {
         display: none;
         flex-direction: column;
-        position: absolute;
-        top: 60px;
+        position: fixed;
+        top: 70px;
         right: 20px;
         width: 220px;
-        background: rgba(0, 0, 0, 0.9);
+        background: rgba(0,0,0,0.9);
         padding: 20px;
         border-radius: 8px;
       }
-      .nav.active {
-        display: flex;
-      }
-      .nav a {
+      nav.nav.active { display: flex; }
+      nav.nav a {
         margin: 5px 0;
         padding: 8px 15px;
         border-radius: 4px;
-        transition: background 0.3s ease;
+        transition: background 0.3s;
       }
-      .nav a:hover {
-        background: rgba(255,255,255,0.1);
-      }
+      nav.nav a:hover { background: rgba(255,255,255,0.1); }
     }
-    
+    main {
+      padding-top: 100px; /* Abstand zum fixierten Header */
+    }
+    /* Zusätzlicher Info-Abschnitt */
+    .team-info {
+      max-width: 1200px;
+      margin: 120px auto 50px;
+      padding: 40px 20px;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+      text-align: center;
+    }
+    .team-info h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.5em;
+      color: var(--primary-color);
+      margin-bottom: 20px;
+    }
+    .team-info p {
+      font-size: 18px;
+      line-height: 1.6;
+    }
     /* Team Container & Team Member Styles */
     .team-container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 30px;
-      margin: 120px auto 50px;
+      margin: 50px auto 50px;
       padding: 50px 20px;
+      max-width: 1200px;
     }
     .team-member {
-      background: rgba(30, 30, 30, 0.85);
+      background: rgba(30,30,30,0.85);
       padding: 20px;
       border-radius: 12px;
       text-align: center;
@@ -188,39 +191,35 @@
     }
     .team-member h2 {
       margin: 15px 0;
+      font-family: 'Montserrat', sans-serif;
     }
     .team-member p.dis {
       font-size: 16px;
       margin: 5px 0;
     }
-    
-    /* Standard-Profilbild-Ring */
     .Profil {
       width: 100px;
       height: 100px;
       border-radius: 50%;
       margin: 0 auto 15px;
-      border: 3px solid #fff; /* Fallback-Farbe, falls kein Rang zugeordnet ist */
+      border: 3px solid #fff;
       transition: transform 0.3s;
     }
-    .Profil:hover {
-      transform: scale(1.1);
-    }
-    
+    .Profil:hover { transform: scale(1.1); }
     /* Rangspezifische Farben */
-    .team-ON .Profil { border-color: #c9005a; }   /* Inhaber */
-    .team-PL .Profil { border-color: #c04bff; }   /* Projektleitung */
-    .team-TM .Profil { border-color: #f7e014; }   /* Teammanagement (Beispiel) */
-    .team-AD .Profil { border-color: #8a2be2; }   /* Administrator */
-    .team-FW .Profil { border-color: #ff7b00; }   /* Fraktionsverwaltung */
-    .team-SP .Profil { border-color: #00bfff; }   /* Supporter */
-    .team-MD .Profil { border-color: #00ffff; }   /* Moderator */
+    .team-ON .Profil { border-color: #ffd000; }
+    .team-PL .Profil { border-color: #ff0000; }
+    .team-TM .Profil { border-color: #f7e014; }
+    .team-AD .Profil { border-color: #8a2be2; }
+    .team-FW .Profil { border-color: #ff7b00; }
+    .team-SP .Profil { border-color: #00bfff; }
+    .team-MD .Profil { border-color: #00ffff; }
     
     /* Footer */
-    .footer {
+    footer.footer {
       background: linear-gradient(45deg, rgba(20,20,20,0.95), rgba(10,10,10,0.95));
       padding: 40px 30px;
-      border-top: 3px solid #ffc400;
+      border-top: 3px solid var(--primary-color);
       display: flex;
       flex-wrap: wrap;
       justify-content: space-around;
@@ -234,20 +233,19 @@
       text-align: left;
     }
     .footer-section h3 {
+      font-family: 'Montserrat', sans-serif;
       font-size: 20px;
-      color: #ffc400;
+      color: var(--primary-color);
       margin-bottom: 15px;
     }
     .footer-section a {
-      color: #fff;
+      color: var(--text-color);
       text-decoration: none;
       display: block;
       margin-bottom: 8px;
       transition: color 0.3s;
     }
-    .footer-section a:hover {
-      color: #ffc400;
-    }
+    .footer-section a:hover { color: var(--primary-color); }
     .footer-section p {
       font-size: 14px;
       margin: 0;
@@ -272,13 +270,15 @@
   </header>
   
   <main>
+    <!-- Zusätzlicher Info-Abschnitt -->
+    <section class="team-info">
+      <h1>Unser kleines, aber engagiertes Team</h1>
+      <p>
+        Auch wenn wir nur ein kleines Team sind, stehen wir euch jederzeit mit Herz und Leidenschaft zur Seite. Bei Nordhaven RP zählt jeder einzelne von euch – wir heißen jeden herzlich willkommen und sind stets bemüht, euch das bestmögliche Spielerlebnis zu bieten. Ob bei Fragen, Problemen oder einfach nur zum gemeinsamen Zocken – wir sind immer für euch da und freuen uns darauf, mit euch unvergessliche Abenteuer zu erleben.
+      </p>
+    </section>
+    
     <div class="team-container">
-      <!-- Inhaber -->
-      <div class="team-member team-ON">
-        <img class="Profil" src="img/Designer.jpeg" alt="Profilbild">
-        <h2>Ruben</h2>
-        <p class="dis">Rang: Server Inhaber</p>
-      </div>
       <!-- Projektleitung -->
       <div class="team-member team-PL">
         <img class="Profil" src="img/Designer.jpeg" alt="Profilbild">
@@ -287,47 +287,35 @@
       </div>
       <div class="team-member team-PL">
         <img class="Profil" src="img/Designer.jpeg" alt="Profilbild">
-        <h2>EthanWolf</h2>
+        <h2>LGD_Gamer_</h2>
         <p class="dis">Rang: Projektleitung</p>
       </div>
       <div class="team-member team-PL">
         <img class="Profil" src="img/Designer.jpeg" alt="Profilbild">
-        <h2>LGD_Gamer_</h2>
+        <h2>EthanWolf</h2>
         <p class="dis">Rang: STV. Projektleitung</p>
       </div>
       <!-- Teammanagement -->
       <div class="team-member team-TM">
         <img class="Profil" src="img/Designer.jpeg" alt="Profilbild">
-        <h2>Luks</h2>
+        <h2>Nico</h2>
         <p class="dis">Rang: Teammanagement</p>
       </div>
       <!-- Administrator -->
       <div class="team-member team-AD">
         <img class="Profil" src="img/Designer.jpeg" alt="Profilbild">
-        <h2>Danney</h2>
+        <h2>Fox</h2>
         <p class="dis">Rang: Administrator</p>
-      </div>
-      <!-- Fraktionsverwaltung -->
-      <div class="team-member team-FW">
-        <img class="Profil" src="img/Designer.jpeg" alt="Profilbild">
-        <h2>Marco</h2>
-        <p class="dis">Rang: Fraktionsverwaltung</p>
-      </div>
-      <!-- Supporter -->
-      <div class="team-member team-SP">
-        <img class="Profil" src="img/Designer.jpeg" alt="Profilbild">
-        <h2>Supporter</h2>
-        <p class="dis">Rang: Supporter</p>
       </div>
       <!-- Moderator -->
       <div class="team-member team-MD">
         <img class="Profil" src="img/Designer.jpeg" alt="Profilbild">
-        <h2>Fox</h2>
+        <h2>Killer_Elite</h2>
         <p class="dis">Rang: Moderator</p>
       </div>
       <div class="team-member team-MD">
         <img class="Profil" src="img/Designer.jpeg" alt="Profilbild">
-        <h2>Killer_Elite</h2>
+        <h2>Danney</h2>
         <p class="dis">Rang: Moderator</p>
       </div>
       <!-- Test Supporter -->
